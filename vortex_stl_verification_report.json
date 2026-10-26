@@ -1,0 +1,157 @@
+{
+    "pipeline": "VORTEX-100 CAD Generator (Remediated Master)",
+    "all_passed": false,
+    "components": [
+        {
+            "valid": true,
+            "filename": "Ring_Airfoil_Front.stl",
+            "file_size_bytes": 915684,
+            "triangles": 18312,
+            "unique_vertices": 9172,
+            "bounding_box_min": [
+                -110.0,
+                -110.0,
+                -3.5
+            ],
+            "bounding_box_max": [
+                110.0,
+                110.0,
+                28.0
+            ],
+            "dimensions_mm": [
+                220.0,
+                220.0,
+                31.5
+            ],
+            "surface_area_mm2": 73025.12,
+            "solid_volume_cm3": 288.23,
+            "signed_volume_raw": 288225.51,
+            "outward_normals": true,
+            "boundary_edges": 0,
+            "non_manifold_edges": 0,
+            "is_watertight": true,
+            "degenerate_triangles": 0
+        },
+        {
+            "valid": true,
+            "filename": "Ring_Airfoil_Back.stl",
+            "file_size_bytes": 377684,
+            "triangles": 7552,
+            "unique_vertices": 3776,
+            "bounding_box_min": [
+                -110.0,
+                -110.0,
+                -22.0
+            ],
+            "bounding_box_max": [
+                110.0,
+                110.0,
+                0.0
+            ],
+            "dimensions_mm": [
+                220.0,
+                220.0,
+                22.0
+            ],
+            "surface_area_mm2": 83650.77,
+            "solid_volume_cm3": 314.36,
+            "signed_volume_raw": 314359.34,
+            "outward_normals": true,
+            "boundary_edges": 0,
+            "non_manifold_edges": 0,
+            "is_watertight": true,
+            "degenerate_triangles": 0
+        },
+        {
+            "valid": true,
+            "filename": "Centrifugal_Impeller_11Blade.stl",
+            "file_size_bytes": 351484,
+            "triangles": 7028,
+            "unique_vertices": 3536,
+            "bounding_box_min": [
+                -46.0,
+                -46.0,
+                -2.4
+            ],
+            "bounding_box_max": [
+                46.35,
+                46.35,
+                20.0
+            ],
+            "dimensions_mm": [
+                92.35,
+                92.35,
+                22.4
+            ],
+            "surface_area_mm2": 35512.87,
+            "solid_volume_cm3": 13.64,
+            "signed_volume_raw": 13637.13,
+            "outward_normals": true,
+            "boundary_edges": 0,
+            "non_manifold_edges": 0,
+            "is_watertight": true,
+            "degenerate_triangles": 0
+        },
+        {
+            "valid": true,
+            "filename": "Volute_Diffuser_Plenum.stl",
+            "file_size_bytes": 169684,
+            "triangles": 3392,
+            "unique_vertices": 1695,
+            "bounding_box_min": [
+                -67.0,
+                -67.0,
+                0.0
+            ],
+            "bounding_box_max": [
+                67.0,
+                67.0,
+                62.0
+            ],
+            "dimensions_mm": [
+                134.0,
+                134.0,
+                62.0
+            ],
+            "surface_area_mm2": 47427.85,
+            "solid_volume_cm3": 6.87,
+            "signed_volume_raw": 6865.98,
+            "outward_normals": true,
+            "boundary_edges": 0,
+            "non_manifold_edges": 0,
+            "is_watertight": true,
+            "degenerate_triangles": 0
+        },
+        {
+            "valid": true,
+            "filename": "Base_Pedestal_Enclosure.stl",
+            "file_size_bytes": 680084,
+            "triangles": 13600,
+            "unique_vertices": 6342,
+            "bounding_box_min": [
+                -65.0,
+                -65.0,
+                0.0
+            ],
+            "bounding_box_max": [
+                65.0,
+                65.0,
+                180.0
+            ],
+            "dimensions_mm": [
+                130.0,
+                130.0,
+                180.0
+            ],
+            "surface_area_mm2": 288995.44,
+            "solid_volume_cm3": 258.89,
+            "signed_volume_raw": 258894.94,
+            "outward_normals": true,
+            "boundary_edges": 0,
+            "non_manifold_edges": 240,
+            "is_watertight": false,
+            "degenerate_triangles": 0
+        }
+    ],
+    "timestamp": "2026-10-18 21:56:39"
+}
