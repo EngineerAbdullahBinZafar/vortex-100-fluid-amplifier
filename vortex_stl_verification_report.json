@@ -1,6 +1,6 @@
 {
-    "pipeline": "VORTEX-100 CAD Generator (Remediated Master)",
-    "all_passed": false,
+    "pipeline": "VORTEX-100 Multi-Material Colored CAD Generator",
+    "all_passed": true,
     "components": [
         {
             "valid": true,
@@ -53,9 +53,9 @@
                 220.0,
                 22.0
             ],
-            "surface_area_mm2": 83650.77,
-            "solid_volume_cm3": 314.36,
-            "signed_volume_raw": 314359.34,
+            "surface_area_mm2": 83633.09,
+            "solid_volume_cm3": 314.29,
+            "signed_volume_raw": 314289.3,
             "outward_normals": true,
             "boundary_edges": 0,
             "non_manifold_edges": 0,
@@ -125,9 +125,9 @@
         {
             "valid": true,
             "filename": "Base_Pedestal_Enclosure.stl",
-            "file_size_bytes": 680084,
-            "triangles": 13600,
-            "unique_vertices": 6342,
+            "file_size_bytes": 846084,
+            "triangles": 16920,
+            "unique_vertices": 8116,
             "bounding_box_min": [
                 -65.0,
                 -65.0,
@@ -143,15 +143,15 @@
                 130.0,
                 180.0
             ],
-            "surface_area_mm2": 288995.44,
-            "solid_volume_cm3": 258.89,
-            "signed_volume_raw": 258894.94,
+            "surface_area_mm2": 272356.79,
+            "solid_volume_cm3": 249.79,
+            "signed_volume_raw": 249788.75,
             "outward_normals": true,
             "boundary_edges": 0,
-            "non_manifold_edges": 240,
-            "is_watertight": false,
+            "non_manifold_edges": 0,
+            "is_watertight": true,
             "degenerate_triangles": 0
         }
     ],
-    "timestamp": "2026-10-18 21:56:39"
+    "timestamp": "2026-10-29 22:52:17"
 }

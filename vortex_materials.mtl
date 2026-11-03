@@ -1,0 +1,36 @@
+# VORTEX-100 PBR Material Definitions
+# Student: ABDULLAH BIN ZAFAR (2023-MC-292) | Dept: Mechatronics, UET Lahore
+# Palette: Nordic Pure Calibrated CMF
+
+newmtl Warm_Alabaster_White
+Ka 0.9570 0.9450 0.9180
+Kd 0.9570 0.9450 0.9180
+Ks 0.2000 0.2000 0.2000
+Ns 35.0
+d 1.00
+illum 2
+
+newmtl Champagne_Gold
+Ka 0.8310 0.6860 0.2160
+Kd 0.8310 0.6860 0.2160
+Ks 0.8800 0.8800 0.8800
+Ns 88.0
+d 1.00
+illum 2
+
+newmtl Dark_Charcoal
+Ka 0.1330 0.1450 0.1650
+Kd 0.1330 0.1450 0.1650
+Ks 0.1500 0.1500 0.1500
+Ns 25.0
+d 1.00
+illum 2
+
+newmtl Warm_White_Halo
+Ka 1.0000 0.9730 0.9060
+Kd 1.0000 0.9730 0.9060
+Ks 0.3000 0.3000 0.3000
+Ke 1.0000 0.9730 0.9060
+Ns 50.0
+d 0.92
+illum 2

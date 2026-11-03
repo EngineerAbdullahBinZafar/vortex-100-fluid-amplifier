@@ -1626,20 +1626,20 @@
               <line x1="297" y1="475" x2="307" y2="467" stroke="#ffffff" stroke-width="2"/>
               <text x="270" y="480" fill="#ffffff" font-family="'Space Mono', monospace" font-size="9" font-weight="bold" text-anchor="middle">11-BLADE IMPELLER</text>
 
-              <!-- A2212 1100KV BLDC Motor on Shore-40A Decoupling Mounts -->
+              <!-- 12V High-Static Centrifugal Blower (7530/9733) on Shore-40A Decoupling Mounts -->
               <rect x="249" y="494" width="42" height="38" rx="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.8"/>
               <!-- Silicone Anti-Vibration Grommets (Blue Shore-40A) -->
               <circle cx="245" cy="500" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5"/>
               <circle cx="295" cy="500" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5"/>
               <circle cx="245" cy="526" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5"/>
               <circle cx="295" cy="526" r="4.5" fill="#38bdf8" stroke="#ffffff" stroke-width="1.5"/>
-              <text x="270" y="518" fill="#ffffff" font-family="'Space Mono', monospace" font-size="8.5" text-anchor="middle">A2212 BLDC</text>
+              <text x="270" y="518" fill="#ffffff" font-family="'Space Mono', monospace" font-size="8.5" text-anchor="middle">12V Blower</text>
 
               <!-- Dual Air Distribution Risers into Toroid Loop -->
               <path d="M 224 422 L 180 326 L 180 230" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6 3"/>
               <path d="M 316 422 L 360 326 L 360 230" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6 3"/>
 
-              <!-- Lower Mechatronics Bay: 30A ESC + Arduino Nano -->
+              <!-- Control & Power Bay: 12V PWM Stepless Potentiometer + DC Jack -->
               <rect x="228" y="652" width="84" height="28" rx="4" fill="#065f46" stroke="#10b981" stroke-width="1.5"/>
               <text x="270" y="670" fill="#ffffff" font-family="'Space Mono', monospace" font-size="9" text-anchor="middle">ARDUINO + 30A ESC</text>
             </g>
@@ -1723,7 +1723,7 @@
 
           <div class="part-card" onclick="activatePart('base', this)">
             <h4>5. Monolithic Pedestal Chassis <span>Part 05</span></h4>
-            <p>Houses the A2212 1100KV motor on <strong>Shore-40A silicone isolators</strong>, integrating seamless capacitive touch glass, DC barrel jack, and Arduino/ESC power harness.</p>
+            <p>Houses the 12V High-Static Blower (7530/9733) on <strong>Shore-40A silicone isolators</strong>, integrating tactile rotary dimmer potentiometer, DC barrel jack, and 360-degree cylindrical HEPA chamber.</p>
           </div>
         </div>
       </div>
@@ -1896,7 +1896,7 @@
               <td><strong>Motor Technology</strong></td>
               <td>AC Shaded-Pole (Hot, noisy, 35W)</td>
               <td>Custom 24V BLDC Motor</td>
-              <td><strong>A2212 1100KV BLDC + S-Curve Firmware</strong></td>
+              <td><strong>12V High-Static Blower + Tactile PWM Governor</strong></td>
             </tr>
             <tr>
               <td><strong>Cleaning & Maintenance</strong></td>
@@ -2092,6 +2092,21 @@
         </div>
         <div class="note-box" style="margin-top: 16px; background: rgba(56,189,248,0.08); border-color: rgba(56,189,248,0.3);">
           <strong>📁 Verified Storage Directory on Disk:</strong> All 6 watertight <code>.STL</code> files are compiled directly in <code>C:\Users\star\Downloads\product design\</code> and organized in <code>cad_stl/</code>. Ready to copy to a USB drive for your university lab 3D printer or commercial 3D printing hub!
+        </div>
+
+        <div style="margin-top: 14px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px;">
+          <div style="background: var(--bg-card-soft); padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border-cozy);">
+            <strong style="color: var(--accent-terracotta);">🎨 3MF Multi-Material Colored Assembly</strong><br>
+            <span style="font-size: 12px; color: var(--text-muted);"><code>VORTEX_100_Full_Assembly_Colored.3mf</code> (OPC ZIP Package &bull; &lt;m:colorgroup&gt; #F4F1EA, #D4AF37, #22252A, #FFF8E7)</span>
+          </div>
+          <div style="background: var(--bg-card-soft); padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border-cozy);">
+            <strong style="color: var(--accent-warm-gold);">💎 Wavefront OBJ + PBR Material Library</strong><br>
+            <span style="font-size: 12px; color: var(--text-muted);"><code>VORTEX_100_Full_Assembly.obj</code> &amp; <code>vortex_materials.mtl</code> (Photorealistic PBR Shaders)</span>
+          </div>
+          <div style="background: var(--bg-card-soft); padding: 12px 16px; border-radius: 12px; border: 1px solid var(--border-cozy);">
+            <strong style="color: #059669;">📐 ISO 10303-21 STEP AP214 Faceted B-Rep</strong><br>
+            <span style="font-size: 12px; color: var(--text-muted);"><code>VORTEX_100_Full_Assembly_Colored.step</code> (Universal CAD Solid Bodies &bull; COLOUR_RGB Styling)</span>
+          </div>
         </div>
       </div>
 
@@ -2332,7 +2347,7 @@
                 <td><strong>Motor Vibration Isolation Grommets</strong></td>
                 <td>Shore-40A Molded Silicone Rubber Dampers (9mm OD × 4.5mm H)</td>
                 <td><strong>4x</strong></td>
-                <td>Sandwiched between A2212 motor base and chassis bulkhead on 19mm PCD. Cuts noise by 14 dB</td>
+                <td>Sandwiched between 12V Blower cradle and chassis bulkhead on 4 mounting bosses. Cuts noise by 14 dB</td>
               </tr>
               <tr>
                 <td><span class="balloon-tag">5</span></td>
@@ -2379,7 +2394,7 @@
             <div style="background: var(--bg-card-soft); border: 1px solid var(--border-cozy); padding: 16px; border-radius: 14px;">
               <strong style="color: var(--accent-warm-gold);">Stage 2: Motor Mounting &amp; Vibration Decoupling</strong>
               <p style="font-size: 13px; color: var(--text-body); margin-top: 4px; line-height: 1.5;">
-                With full 360° screwdriver access on your open bench, mount the A2212 1100KV brushless motor onto the silicone grommets using 4x M3x8mm stainless button head screws with nylon locknuts. Torque evenly until the silicone compresses by 18%, creating an acoustic vibration barrier that prevents motor hum from resonating through the chassis.
+                With full 360° screwdriver access on your open bench, mount the 12V High-Static Blower onto the Shore-40A silicone grommets using 4x M3x8mm stainless button head screws with nylon locknuts. Torque evenly until the silicone compresses by 18%, creating an acoustic vibration barrier that prevents motor hum from resonating through the chassis.
               </p>
             </div>
             <div style="background: var(--bg-card-soft); border: 1px solid var(--border-cozy); padding: 16px; border-radius: 14px;">
@@ -2434,7 +2449,166 @@
         </div>
       </div>
 
-      
+      <!-- ==================== PART 2D-2: DYSON GEN1 6-PHASE ASSEMBLY & 5-JOB 3D PRINTING MANUAL ==================== -->
+      <div class="cozy-card" style="margin-top: 28px; border: 2px solid rgba(212,175,55,0.4); background: linear-gradient(180deg, rgba(255,251,245,0.95) 0%, #ffffff 100%);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h4 style="font-family: var(--font-serif); font-size: 22px; color: var(--text-espresso); margin-bottom: 4px;">🖨️ Chronological 3D Printing Profile &amp; 6-Phase Physical Assembly Manual</h4>
+            <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Calibrated for standard 220×220×250mm FDM beds (0.4mm nozzle, 0.20mm layer height, 4 walls / 1.6mm shell), 5-job print sequence (~28.2 hrs total), parallel bench assembly, and DMM safety commissioning.</p>
+          </div>
+          <span style="background: var(--accent-warm-gold); color: #ffffff; padding: 6px 16px; border-radius: 20px; font-size: 12px; font-weight: 700;">Dyson Gen1 Architecture</span>
+        </div>
+
+        <!-- Section 1: Standard FDM Slicer & Printing Calibration Profile -->
+        <div style="background: #ffffff; border: 1px solid var(--border-cozy); padding: 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <h5 style="margin: 0 0 12px 0; font-family: var(--font-serif); font-size: 18px; color: var(--text-espresso);">1. Standard FDM Slicer &amp; Printing Calibration Profile (220×220×250mm Bed)</h5>
+          <div class="grid-3" style="gap: 16px; margin-bottom: 16px;">
+            <div style="background: var(--bg-card-soft); padding: 14px; border-radius: 12px; border: 1px solid var(--border-cozy);">
+              <strong style="color: var(--accent-warm-gold); font-size: 13px;">Build Envelope &amp; Kinematics</strong>
+              <p style="font-size: 12px; color: var(--text-body); margin: 4px 0 0 0; line-height: 1.5;">
+                <strong>Bed Size:</strong> 220 × 220 × 250 mm (Ender-3 / Neptune / SV06)<br>
+                <strong>Nozzle:</strong> 0.40 mm Brass / Hardened Steel<br>
+                <strong>Layer Height:</strong> 0.20 mm standard (0.24mm first layer; 0.16mm adaptive on Coandă ramp)
+              </p>
+            </div>
+            <div style="background: var(--bg-card-soft); padding: 14px; border-radius: 12px; border: 1px solid var(--border-cozy);">
+              <strong style="color: var(--accent-warm-gold); font-size: 13px;">Shells &amp; Acoustic Damping</strong>
+              <p style="font-size: 12px; color: var(--text-body); margin: 4px 0 0 0; line-height: 1.5;">
+                <strong>Perimeters:</strong> 4 solid walls (1.60 mm total shell)<br>
+                <strong>Infill:</strong> 20%–25% Gyroid (isotropic stiffness, resonance damping); 35% Gyroid for Blower Cradle<br>
+                <strong>Solid Layers:</strong> 5 top / 4 bottom (1.0 mm)
+              </p>
+            </div>
+            <div style="background: var(--bg-card-soft); padding: 14px; border-radius: 12px; border: 1px solid var(--border-cozy);">
+              <strong style="color: var(--accent-warm-gold); font-size: 13px;">Thermal Profile Comparison</strong>
+              <p style="font-size: 12px; color: var(--text-body); margin: 4px 0 0 0; line-height: 1.5;">
+                <strong>PETG (Recommended):</strong> Nozzle 238°C / Bed 78°C / Fan 40–50% / HDT 73°C (prevents motor thermal creep)<br>
+                <strong>PLA+ (Alternative):</strong> Nozzle 210°C / Bed 60°C / Fan 100% / HDT 55°C
+              </p>
+            </div>
+          </div>
+          <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.25); border-radius: 12px; padding: 12px 16px; font-size: 12px; color: var(--text-body); line-height: 1.5;">
+            <strong>Zero-Support Orientation Engineering:</strong> Front Airfoil Lip prints flat rear face down (16° Coandă ramp self-supports cleanly with 0 supports); Rear Cowl prints bellmouth rim flat down (0 supports, groove channel points up); Base Bottom Lid prints flat face down (0 supports); Base Pedestal prints upright with minimal organic tree support under the top deck rim only (180 perforated holes bridge cleanly).
+          </div>
+        </div>
+
+        <!-- Section 2: Chronological 5-Job 3D Printing Sequence (~28.2 hrs total, ~585g filament) -->
+        <div style="background: #ffffff; border: 1px solid var(--border-cozy); padding: 20px; border-radius: 16px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+            <h5 style="margin: 0; font-family: var(--font-serif); font-size: 18px; color: var(--text-espresso);">2. Chronological 5-Job 3D Printing Sequence &amp; Parallel Bench Assembly</h5>
+            <span style="font-size: 12px; font-weight: 700; color: var(--text-muted);">Total: ~28.2 Hours &bull; ~585g Filament Consumed</span>
+          </div>
+          <div class="table-responsive">
+            <table class="cozy-table" style="font-size: 12px;">
+              <thead>
+                <tr>
+                  <th>Job #</th>
+                  <th>Target Component</th>
+                  <th>Dimensions (mm)</th>
+                  <th>Print Time</th>
+                  <th>Filament</th>
+                  <th>Infill &amp; Layer</th>
+                  <th>Parallel Bench Assembly Window</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Job 1</strong></td>
+                  <td><strong>Base Pedestal Enclosure</strong></td>
+                  <td>130 × 130 × 180</td>
+                  <td><strong>13.5 hrs</strong></td>
+                  <td>260 g</td>
+                  <td>20% Gyroid, 0.20mm</td>
+                  <td>Solder wiring harness to DC jack; bench test 12V blower RPM &amp; halo LED current (~2.5 hrs bench work)</td>
+                </tr>
+                <tr>
+                  <td><strong>Job 2</strong></td>
+                  <td><strong>Ring Airfoil Front Lip</strong></td>
+                  <td>218 × 218 × 31.5</td>
+                  <td><strong>6.8 hrs</strong></td>
+                  <td>120 g</td>
+                  <td>20% Gyroid, 0.16mm*</td>
+                  <td>Melt M3 brass inserts into Base; mount DC barrel jack &amp; front rotary potentiometer</td>
+                </tr>
+                <tr>
+                  <td><strong>Job 3</strong></td>
+                  <td><strong>Ring Airfoil Rear Cowl</strong></td>
+                  <td>218 × 218 × 22.0</td>
+                  <td><strong>5.2 hrs</strong></td>
+                  <td>95 g</td>
+                  <td>20% Gyroid, 0.20mm</td>
+                  <td>Inspect Coandă ramp; test-fit 12V halo LED ring into reflector channel &amp; route wires</td>
+                </tr>
+                <tr>
+                  <td><strong>Job 4</strong></td>
+                  <td><strong>Blower Duct Manifold &amp; Cradle</strong></td>
+                  <td>85 × 75 × 42.0</td>
+                  <td><strong>1.8 hrs</strong></td>
+                  <td>75 g</td>
+                  <td>35% Gyroid, 0.20mm</td>
+                  <td>Press Shore-40A silicone grommets into blower ears; bolt blower with 20% preload</td>
+                </tr>
+                <tr>
+                  <td><strong>Job 5</strong></td>
+                  <td><strong>Bayonet Lid &amp; Control Knob</strong></td>
+                  <td>128 × 128 × 15.0</td>
+                  <td><strong>0.9 hrs</strong></td>
+                  <td>35 g</td>
+                  <td>25% Gyroid, 0.20mm</td>
+                  <td>Final assembly: HEPA insertion, feeler gauge check, pre-power DMM test, commissioning</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Section 3: 6-Phase Step-by-Step Physical Assembly Manual -->
+        <div style="background: #ffffff; border: 1px solid var(--border-cozy); padding: 20px; border-radius: 16px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+          <h5 style="margin: 0 0 14px 0; font-family: var(--font-serif); font-size: 18px; color: var(--text-espresso);">3. 6-Phase Step-by-Step Physical Assembly &amp; Commissioning Guide</h5>
+          <div class="grid-2" style="gap: 16px;">
+            <div style="background: var(--bg-card-soft); border: 1px solid var(--border-cozy); padding: 16px; border-radius: 14px;">
+              <strong style="color: var(--accent-warm-gold); font-size: 14px;">Phase A: Pre-Assembly Inspection &amp; M3 Heat-Set Inserts</strong>
+              <p style="font-size: 12px; color: var(--text-body); margin-top: 6px; line-height: 1.5;">
+                Inspect all prints for surface smoothness and deburr parting edges. Set soldering iron to 235°C (PETG) or 205°C (PLA+). Thermally press Ruthex M3×4.6mm brass inserts into 4.2mm pilot holes: 4x in Base top deck, 4x in internal blower stanchions, and 6x in Rear Cowl perimeter bosses. Ensure inserts seat 0.2mm sub-flush and perpendicular using a cold flat steel plate.
+              </p>
+            </div>
+            <div style="background: var(--bg-card-soft); border: 1px solid var(--border-cozy); padding: 16px; border-radius: 14px;">
+              <strong style="color: var(--accent-warm-gold); font-size: 14px;">Phase B: Airfoil Ring Subassembly &amp; 1.25mm Feeler Gauge</strong>
+              <p style="font-size: 12px; color: var(--text-body); margin-top: 6px; line-height: 1.5;">
+                Fit 12V 3000K warm white halo LED ring into Front Lip reflector channel; route wire pigtail down right riser. Dry-mate Front Lip and Rear Cowl. <strong>Feeler Gauge Verification:</strong> Sweep a 1.25mm feeler gauge around the entire 360° nozzle perimeter; confirm uniform gap within 1.25±0.05mm. Lay continuous 1.0mm neutral-cure clear RTV silicone bead in groove, clamp, and torque 6x M3×12mm screws in criss-cross pattern to 0.60 N&bull;m.
+              </p>
+            </div>
+            <div style="background: var(--bg-card-soft); border: 1px solid var(--border-cozy); padding: 16px; border-radius: 14px;">
+              <strong style="color: var(--accent-warm-gold); font-size: 14px;">Phase C: 12V Blower Installation &amp; Shore-40A Grommets</strong>
+              <p style="font-size: 12px; color: var(--text-body); margin-top: 6px; line-height: 1.5;">
+                Install 4x Shore-40A silicone vibration grommets (9mm OD, 6.5mm height) into 12V high-static blower flange. Apply 2.0mm closed-cell EPDM gasket between blower exhaust and transition duct. Secure blower to cradle with M3 screws and wide flat washers; tighten until grommets compress by exactly <strong>20% preload (from 6.5mm to 5.2mm)</strong>, achieving acoustic loss factor &eta; &gt; 0.28 to completely isolate motor harmonics.
+              </p>
+            </div>
+            <div style="background: var(--bg-card-soft); border: 1px solid var(--border-cozy); padding: 16px; border-radius: 14px;">
+              <strong style="color: var(--accent-warm-gold); font-size: 14px;">Phase D: Pedestal Installation &amp; Point-to-Point Wiring</strong>
+              <p style="font-size: 12px; color: var(--text-body); margin-top: 6px; line-height: 1.5;">
+                Mount DC 5.5×2.1mm barrel jack into rear 11.2mm port (Z=15mm). Mount stepless rotary potentiometer / detent switch into front 7.2mm boss (Z=145mm) with anti-rotation tab engaged; press Champagne Gold knob. Point-to-point wiring: DC Center (+12V) &rarr; Rotary Switch IN; Switched OUT &rarr; PWM VCC &amp; Halo LED (+); DC Sleeve (GND) &rarr; PWM GND &amp; Halo LED (-); PWM Motor &plusmn; &rarr; Blower &plusmn;. Snap wires into molded wall raceways.
+              </p>
+            </div>
+            <div style="background: var(--bg-card-soft); border: 1px solid var(--border-cozy); padding: 16px; border-radius: 14px;">
+              <strong style="color: var(--accent-warm-gold); font-size: 14px;">Phase E: Cylindrical HEPA Filter &amp; Bayonet Compression</strong>
+              <p style="font-size: 12px; color: var(--text-body); margin-top: 6px; line-height: 1.5;">
+                Insert 360° cylindrical 110×70×120mm True HEPA H13 + activated carbon filter cartridge through bottom opening. Firmly seat against internal ceiling shelf at Z=110mm. Engage Base Bottom Lid lugs into 3-slot bayonet receiver; rotate 45° clockwise until tactile detent locks. <strong>Airtight Preload:</strong> Bayonet ramp compresses filter PU gaskets by 1.5mm, eliminating air bypass. Adhere 4x silicone non-skid rubber feet.
+              </p>
+            </div>
+            <div style="background: var(--bg-card-soft); border: 1px solid var(--border-cozy); padding: 16px; border-radius: 14px;">
+              <strong style="color: var(--accent-warm-gold); font-size: 14px;">Phase F: Airfoil Mating, DMM Safety &amp; Live Commissioning</strong>
+              <p style="font-size: 12px; color: var(--text-body); margin-top: 6px; line-height: 1.5;">
+                Dock Airfoil twin risers into Base sockets; fasten with 4x M3 screws and connect LED pigtail. <strong>Pre-Power DMM Safety Check:</strong> Probe DC jack center (+) to sleeve (GND). Switch OFF: Read <em>Open Loop (&infin; / OL)</em>. Switch ON: Read <em>R &gt; 10 k&Omega;</em> (typically 12–25 k&Omega;, confirming zero dead shorts!). Commissioning: Plug 12V 2A adapter; rotate knob clockwise &rarr; audible click illuminates 3000K halo LED &rarr; stepless RPM ramp delivers 18.5 m/s laminar breeze with &lt;38 dBA whisper acoustics!
+              </p>
+            </div>
+          </div>
+          <div style="margin-top: 14px; text-align: center; font-size: 12px; color: var(--text-muted);">
+            📄 For full technical blueprints, torque values, and slicer profiles, refer to the complete <a href="MANUFACTURING_AND_ASSEMBLY_MANUAL.md" style="color: var(--accent-warm-gold); font-weight: 700; text-decoration: underline;">MANUFACTURING_AND_ASSEMBLY_MANUAL.md</a> project document.
+          </div>
+        </div>
+      </div>
+
       <!-- ==================== SPECIAL CARD: DFMA & ERGONOMIC AIR-THROW PROOF ==================== -->
       <div class="cozy-card" style="margin-top: 28px; border: 2px solid rgba(212,163,115,0.4); background: linear-gradient(180deg, rgba(255,251,245,0.9) 0%, #ffffff 100%);">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 10px;">
@@ -2548,29 +2722,29 @@
         </div>
 
         <div class="grid-3" style="gap: 16px;">
-          <!-- CMF 1: Alabaster Cream -->
+          <!-- CMF 1: Warm Alabaster White (Matte Alabaster Cream) -->
           <div class="cmf-chip-large">
-            <div class="cmf-color-box" style="background: #F3EFE0;"></div>
+            <div class="cmf-color-box" style="background: #F4F1EA;"></div>
             <div>
-              <strong style="font-size: 14px; color: var(--text-espresso);">Matte Alabaster Cream</strong>
-              <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0;">HEX: #F3EFE0 &bull; Pantone 11-0601 TPG</p>
+              <strong style="font-size: 14px; color: var(--text-espresso);">Warm Alabaster White (Matte Alabaster Cream)</strong>
+              <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0;">HEX: #F4F1EA &bull; Warm Alabaster White &bull; Pantone 11-0601 TPG</p>
               <p style="font-size: 11px; color: var(--text-body); line-height: 1.4;">
                 <strong>Parts:</strong> Front &amp; Rear Ring, Pedestal Base<br>
-                <strong>Filament:</strong> Polymaker PolyLite PETG Cream<br>
+                <strong>Filament:</strong> Polymaker PolyLite PETG Warm Alabaster White / Matte Alabaster Cream<br>
                 <strong>Settings:</strong> 240°C Nozzle / 80°C Bed / 25% Gyroid
               </p>
             </div>
           </div>
 
-          <!-- CMF 2: Champagne Brass -->
+          <!-- CMF 2: Champagne Gold -->
           <div class="cmf-chip-large">
-            <div class="cmf-color-box" style="background: linear-gradient(135deg, #faebd7, #c5a059);"></div>
+            <div class="cmf-color-box" style="background: #D4AF37;"></div>
             <div>
-              <strong style="font-size: 14px; color: var(--text-espresso);">Brushed Champagne Brass</strong>
-              <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0;">HEX: #C5A059 &bull; Pantone 14-1036 TPG</p>
+              <strong style="font-size: 14px; color: var(--text-espresso);">Champagne Gold (Brushed Champagne Brass)</strong>
+              <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0;">HEX: #D4AF37 &bull; Anodized Champagne Gold &bull; Pantone 14-1036 TPG</p>
               <p style="font-size: 11px; color: var(--text-body); line-height: 1.4;">
-                <strong>Parts:</strong> Coandă Lip Trim, Foot Ring Bevel<br>
-                <strong>Filament:</strong> Silk Metallic PETG Brass / Gold<br>
+                <strong>Parts:</strong> Coandă Lip Trim, Foot Ring Bevel, Rotary Control Knob<br>
+                <strong>Filament:</strong> Silk Metallic PETG Champagne Gold<br>
                 <strong>Settings:</strong> 235°C Nozzle / 75°C Bed / 4 Perimeters
               </p>
             </div>
@@ -2590,15 +2764,15 @@
             </div>
           </div>
 
-          <!-- CMF 4: Matte Technical Black -->
+          <!-- CMF 4: Dark Charcoal -->
           <div class="cmf-chip-large">
-            <div class="cmf-color-box" style="background: #222222;"></div>
+            <div class="cmf-color-box" style="background: #22252A;"></div>
             <div>
-              <strong style="font-size: 14px; color: var(--text-espresso);">Technical Matte Black</strong>
-              <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0;">HEX: #222222 &bull; Acoustic Matte Black</p>
+              <strong style="font-size: 14px; color: var(--text-espresso);">Dark Charcoal (Technical Matte Black)</strong>
+              <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0;">HEX: #22252A &bull; Dark Charcoal Technical Matte</p>
               <p style="font-size: 11px; color: var(--text-body); line-height: 1.4;">
-                <strong>Parts:</strong> Volute Diffuser Plenum Chamber<br>
-                <strong>Filament:</strong> PolyLite PETG Black / Natural<br>
+                <strong>Parts:</strong> 360° Perforated Grille, Volute Plenum, Blower Housing<br>
+                <strong>Filament:</strong> PolyLite PETG Dark Charcoal<br>
                 <strong>Settings:</strong> 240°C Nozzle / 80°C Bed / 35% Grid Infill
               </p>
             </div>
@@ -2618,16 +2792,16 @@
             </div>
           </div>
 
-          <!-- CMF 6: Smoked Acrylic Glass -->
+          <!-- CMF 6: Warm White Illuminated Halo Ring -->
           <div class="cmf-chip-large">
-            <div class="cmf-color-box" style="background: linear-gradient(135deg, #181d26, #2d3748);"></div>
+            <div class="cmf-color-box" style="background: #FFF8E7; border: 1px solid #D4AF37;"></div>
             <div>
-              <strong style="font-size: 14px; color: var(--text-espresso);">Smoked Glass Touch Bezel</strong>
-              <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0;">Semi-Transparent 2.0mm Acrylic PMMA</p>
+              <strong style="font-size: 14px; color: var(--text-espresso);">Warm White Halo Ring Lightguide</strong>
+              <p style="font-size: 12px; color: var(--text-muted); margin: 2px 0;">HEX: #FFF8E7 &bull; 2700K Architectural Ambient Illumination</p>
               <p style="font-size: 11px; color: var(--text-body); line-height: 1.4;">
-                <strong>Parts:</strong> Top Bezel, Capacitive Window<br>
-                <strong>Material:</strong> CNC Milled Smoked Acrylic Lens<br>
-                <strong>Branding:</strong> Gold silk-screened "VORTEX-100"
+                <strong>Parts:</strong> Coandă Throat Edge Lightguide &bull; 0.85 Emissive Glow<br>
+                <strong>Material:</strong> Optical Polycarbonate / Frosted PMMA<br>
+                <strong>Illumination:</strong> 2700K Warm White COB LED Ring
               </p>
             </div>
           </div>
@@ -2747,7 +2921,7 @@
             <li><strong>Bernoulli Low-Pressure Depression:</strong> By Bernoulli's principle (P + 0.5·ρ·v² = const), the ultra-high velocity jet causes a drastic localized pressure drop (ΔP ≈ -290 Pa) across the open center of the loop.</li>
             <li><strong>Primary Entrainment (Induction):</strong> Room air sitting behind the fan loop is naturally sucked forward into the low-pressure depression.</li>
             <li><strong>Secondary Entrainment (Shear Drag):</strong> The moving jet drags neighboring still air along its outer boundary through viscous turbulent shear.</li>
-            <li><strong>Volumetric Gain:</strong> The net volumetric airflow exiting the front is <strong>3.2 times greater</strong> than the intake air pumped by the motor base.</li>
+            <li><strong>Volumetric Gain & Total Entrainment:</strong> The net volumetric airflow exiting the front achieves <strong>3.2 times greater</strong> primary jet entrainment and induces up to <strong>3.2x-15x Coandă entrainment</strong> across the wider ambient room through viscous turbulent momentum transfer.</li>
           </ul>
         </div>
 
@@ -2775,6 +2949,9 @@ Standard 120mm Axial PC Fan: Max Shut-Off Head = <span class="c-str">~70 - 90 Pa
 
 VORTEX-100 Backward-Curved Centrifugal Impeller (9,500 RPM):
   ──► Produces <span class="c-fn">1,120 Pa Static Head</span> ──► <span class="c-val">SUCCESSFUL 24.6 m/s JET!</span>
+
+Dyson Gen1 High-Static Centrifugal Blower (7530/9733, 4,200 RPM):
+  ──► Produces <span class="c-fn">340 Pa Static Pressure (&lt;38 dBA)</span> ──► <span class="c-val">OPTIMAL RESIDENTIAL LAMINAR MULTIPLIER</span>
           </div>
         </div>
       </div>
@@ -2799,8 +2976,8 @@ VORTEX-100 Backward-Curved Centrifugal Impeller (9,500 RPM):
           </div>
 
           <div class="note-box">
-            <strong>4. Acoustic Decoupling via Shore-40A Grommets:</strong><br>
-            Directly bolting the high-frequency BLDC motor to a hollow 3D-printed plastic chassis turns the base into an acoustic loudspeaker horn. We isolate the motor mounting plate with <strong>4x Shore-40A silicone rubber vibration grommets</strong>, slashing noise by 14 dB.
+            <strong>4. Acoustic Decoupling via Shore-40A Grommets (-14 dB Noise Reduction):</strong><br>
+            Directly bolting high-speed actuators to a hollow 3D-printed plastic chassis turns the base into an acoustic loudspeaker horn. We isolate the motor/blower mounting cradle with <strong>4x Shore-40A silicone rubber vibration grommets</strong>, slashing structure-borne vibration noise by <strong>-14 dB</strong> (14 dB noise reduction) and maintaining whisper-quiet &lt;38 dBA operation.
           </div>
         </div>
       </div>
@@ -2834,6 +3011,77 @@ VORTEX-100 Backward-Curved Centrifugal Impeller (9,500 RPM):
             <li><strong>Safe Headroom Cap:</strong> Clamps maximum pulse width to 1,920 µs (92% throttle). Prevents motor overheating and keeps power draw well within the 10A adapter ceiling.</li>
             <li><strong>Thermal Watchdog:</strong> DHT22 temperature sensor monitors internal base plenum temperature. Automatically throttles speed if internal ambient exceeds 50°C.</li>
           </ul>
+        </div>
+      </div>
+
+            <!-- ==================== DYSON GEN1 ARCHITECTURE & ENGINEERING RATIONALE ==================== -->
+      <div class="cozy-card" style="margin-top: 28px; background: linear-gradient(135deg, #ffffff 0%, #fbf8f3 100%); border: 2px solid var(--accent-champagne); border-radius: 22px; padding: 28px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 20px;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+              <span style="background: var(--gold-gradient); color: #1f1b18; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">PRIMARY ACADEMIC ARCHITECTURE</span>
+              <span style="background: rgba(16, 185, 129, 0.15); color: #059669; padding: 3px 10px; border-radius: 14px; font-size: 11px; font-weight: 700;">Turnkey BOM: Rs. 5,780 PKR</span>
+            </div>
+            <h3 style="font-family: var(--font-serif); font-size: 26px; color: var(--text-espresso); margin: 0;">
+              Dyson Gen1 Architecture: 12V Blower, Rotary Potentiometer &amp; Halo Illumination
+            </h3>
+          </div>
+          <div style="text-align: right; background: #ffffff; border: 1px solid var(--border-cozy); padding: 12px 20px; border-radius: 14px;">
+            <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Academic Target Window</span>
+            <div style="font-family: var(--font-serif); font-size: 22px; color: #059669; font-weight: 700;">~5.5k–6k PKR</div>
+            <span style="font-size: 11px; color: var(--accent-warm-gold); font-weight: 600;">Saves Rs. 8,880 vs BLDC</span>
+          </div>
+        </div>
+
+        <p style="font-size: 14px; color: var(--text-body); line-height: 1.7; margin-bottom: 20px;">
+          While the exploratory capstone phase evaluated an RC drone BLDC motor with an ESC and Arduino microcontroller, thorough engineering evaluation revealed severe consumer appliance drawbacks: high acoustic whine (&gt;68 dBA), complex ESC firmware calibration, and high build cost (~Rs. 14k PKR). 
+          To deliver a commercially viable, elegant household appliance suited for academic lab defense in Pakistan, VORTEX-100 adopts the proven <strong>Dyson Gen1 Architecture (~5.5k–6k PKR / Rs. 5,780 PKR turnkey BOM)</strong>:
+        </p>
+
+        <div class="grid-2" style="gap: 18px;">
+          <div style="background: #ffffff; border: 1px solid var(--border-cozy); border-radius: 16px; padding: 20px;">
+            <h4 style="font-size: 15px; color: var(--accent-warm-gold); font-weight: 700; margin-bottom: 10px;">
+              🌀 12V High-Static Centrifugal Blower (7530 / 9733)
+            </h4>
+            <p style="font-size: 13px; color: var(--text-body); line-height: 1.6; margin: 0;">
+              • <strong>Model Options:</strong> Model 7530 (75x75x30mm, 16 CFM, 160 Pa) or Model 9733 (97x94x33mm, 28 CFM, 340 Pa static pressure).<br>
+              • <strong>Acoustic Excellence:</strong> Operates at 3,400–4,200 RPM delivering whisper-quiet &lt;38 dBA soothing pink noise, completely eliminating drone motor whine.<br>
+              • <strong>Vibration Isolation:</strong> Seated on 4x Shore-40A silicone grommets in dedicated internal chassis stanchions (-14 dB noise reduction).
+            </p>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid var(--border-cozy); border-radius: 16px; padding: 20px;">
+            <h4 style="font-size: 15px; color: var(--accent-warm-gold); font-weight: 700; margin-bottom: 10px;">
+              🎛️ Stepless Rotary Potentiometer with Integrated Switch
+            </h4>
+            <p style="font-size: 13px; color: var(--text-body); line-height: 1.6; margin: 0;">
+              • <strong>Analog Speed Control:</strong> 12V 2A DC PWM speed governor module with a 10k linear potentiometer and tactile click-to-off switch.<br>
+              • <strong>Ergonomic Knurled Knob:</strong> M7 brass threaded collar seated through 7.2mm anti-rotation front boss with 20mm Champagne Gold knurled knob.<br>
+              • <strong>Zero Firmware Failure Modes:</strong> Instant analog tactile control with 100% mechanical reliability and zero boot delay.
+            </p>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid var(--border-cozy); border-radius: 16px; padding: 20px;">
+            <h4 style="font-size: 15px; color: var(--accent-warm-gold); font-weight: 700; margin-bottom: 10px;">
+              💡 Warm White (3000K) Illuminated Halo LED Ring
+            </h4>
+            <p style="font-size: 13px; color: var(--text-body); line-height: 1.6; margin: 0;">
+              • <strong>Architectural Illumination:</strong> Continuous 3000K Warm White COB LED halo ring mounted in the front airfoil reflector channel.<br>
+              • <strong>Visual CMF Harmony:</strong> Complements the Warm Alabaster White (Matte Alabaster Cream) body and Champagne Gold accents.<br>
+              • <strong>Switched Bus Integration:</strong> Automatically illuminates when the rotary potentiometer click-switch energizes the 12V rail.
+            </p>
+          </div>
+
+          <div style="background: #ffffff; border: 1px solid var(--border-cozy); border-radius: 16px; padding: 20px;">
+            <h4 style="font-size: 15px; color: var(--accent-warm-gold); font-weight: 700; margin-bottom: 10px;">
+              🔌 12V 2A Regulated Adapter &amp; 360° Cylindrical HEPA
+            </h4>
+            <p style="font-size: 13px; color: var(--text-body); line-height: 1.6; margin: 0;">
+              • <strong>Power Input:</strong> 12V 2A (24W continuous) switching wall adapter via rear 5.5x2.1mm panel-mount barrel jack (11.2mm chassis port).<br>
+              • <strong>Air Purification:</strong> 110x70mm cylindrical H13 HEPA + activated carbon filter cartridge compressed 1.5mm by bottom Bayonet Twist-Lock lid.<br>
+              • <strong>Low Pressure Drop:</strong> Filter face velocity &lt;0.08 m/s with static pressure loss &lt;= 55 Pa.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -3023,7 +3271,7 @@ Adafruit_SSD1306 oled(128, 64, &Wire, -1);
 <span style="color:#38bdf8; font-weight:700;">VORTEX-100 COMPLETE POWER & MECHATRONICS INTERCONNECT DIAGRAM:</span>
 <br>
 [12V 10A DC Wall Adapter] ───┬──► [Schottky Diode D1] ───┐
-                             │                            ├──► [Power Rail (+12V)] ──► [30A ESC] ──► [A2212 BLDC Motor]
+                             │                            ├──► [Power Rail (+12V)] ──► [30A ESC] ──► [12V Blower Motor]
                              └──► [3S 20A BMS Charger]   │                                │
                                        │                  │                                └──► [LM7805 / Vin]
 [3S 18650 Li-ion Battery (11.1V)] ─────┴──► [Schottky D2] ─┘                                        │ (+5V Regulated)
@@ -3136,481 +3384,133 @@ Adafruit_SSD1306 oled(128, 64, &Wire, -1);
         </div>
       </div>
 
-      <!-- Local Pakistan Procurement Bill of Materials -->
-      <div class="cozy-card" style="margin-top: 28px;">
-        <h3>Complete Bill of Materials & Pakistan Local Sourcing Guide</h3>
-        <div class="table-responsive"><table class="cozy-table">
-          <thead>
-            <tr>
-              <th>Component & Technical Spec</th>
-              <th>Quantity</th>
-              <th>Local Market Sourcing Source</th>
-              <th>Estimated Cost (PKR)</th>
-              <th>Estimated Cost (USD)</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>A2212 1100KV Brushless Motor</strong> (with 3.17mm prop adapter)</td>
-              <td>1 Pc</td>
-              <td>Hall Road Lahore / Saddar Karachi / Daraz.pk</td>
-              <td>Rs. 2,100</td>
-              <td>$7.50</td>
-            </tr>
-            <tr>
-              <td><strong>30A SimonK Brushless ESC</strong> (Yellow or Red)</td>
-              <td>1 Pc</td>
-              <td>Robotics stores / Daraz / Hall Road</td>
-              <td>Rs. 1,350</td>
-              <td>$4.80</td>
-            </tr>
-            <tr>
-              <td><strong>12V 10A (120W) DC Power Adapter</strong> (High Amperage SMPS)</td>
-              <td>1 Pc</td>
-              <td>LED strip / CCTV shops (Hall Road / Saddar)</td>
-              <td>Rs. 2,200</td>
-              <td>$7.90</td>
-            </tr>
-            <tr>
-              <td><strong>Arduino Nano V3 + Mini-USB Cable</strong> (CH340 or FTDI)</td>
-              <td>1 Pc</td>
-              <td>Electronic component shops / Daraz</td>
-              <td>Rs. 950</td>
-              <td>$3.40</td>
-            </tr>
-            <tr>
-              <td><strong>0.96" SSD1306 I2C 128x64 OLED Display</strong> (Blue/White)</td>
-              <td>1 Pc</td>
-              <td>Robotics component stores / Daraz</td>
-              <td>Rs. 750</td>
-              <td>$2.70</td>
-            </tr>
-            <tr>
-              <td><strong>TTP223 Capacitive Touch Module</strong> (Digital Switch)</td>
-              <td>1 Pc</td>
-              <td>Robotics component stores / Daraz</td>
-              <td>Rs. 120</td>
-              <td>$0.45</td>
-            </tr>
-            <tr>
-              <td><strong>360° Cylindrical Pleated HEPA Filter</strong> (120mm x 130mm)</td>
-              <td>1 Pc</td>
-              <td>Car air purifier / Desktop filter / Daraz</td>
-              <td>Rs. 1,400</td>
-              <td>$5.00</td>
-            </tr>
-            <tr>
-              <td><strong>PETG Filament Spool (1.0 kg, Warm White / Ivory)</strong></td>
-              <td>1 Spool</td>
-              <td>3D printing stores (3D Hub Pakistan, Makerbazar)</td>
-              <td>Rs. 3,800</td>
-              <td>$13.60</td>
-            </tr>
-            <tr>
-              <td><strong>M3 Brass Heat-Set Inserts (20x) + M3x12mm Screws</strong></td>
-              <td>1 Set</td>
-              <td>Hardware / 3D printing supplies</td>
-              <td>Rs. 450</td>
-              <td>$1.60</td>
-            </tr>
-            <tr>
-              <td><strong>Shore-40A Silicone Rubber Vibration Grommets (4x)</strong></td>
-              <td>4 Pcs</td>
-              <td>RC drone stores / Audio equipment dampeners</td>
-              <td>Rs. 300</td>
-              <td>$1.10</td>
-            </tr>
-            <tr>
-              <td><strong>Clear RTV Neutral Silicone Sealant (Small Tube)</strong></td>
-              <td>1 Tube</td>
-              <td>Hardware / Auto parts shop</td>
-              <td>Rs. 380</td>
-              <td>$1.35</td>
-            </tr>
-            <tr style="background:#faf7f1; font-weight:700;">
-              <td><strong>TOTAL PROTOTYPE SOURCING ESTIMATE</strong></td>
-              <td><strong>Complete Kit</strong></td>
-              <td><strong>Readily Available in Pakistan (3-5 days delivery)</strong></td>
-              <td><strong>Rs. 13,800 PKR</strong></td>
-              <td><strong>$49.40 USD</strong></td>
-            </tr>
-          </tbody>
-        </table></div>
-        <p style="margin-top: 14px; font-size: 13px; color: var(--accent-warm-gold);">
-          *Note: In mass production (injection-molded PC-ABS resin, factory BLDC motor tooling), unit manufacturing cost drops to approximately <strong>$24.50 USD (Rs. 6,850 PKR)</strong>, yielding a 65% profit margin at a $69 retail MSRP.
-        </p>
-      </div>
-    </div>
-
-    
-      <!-- INTERNAL SPATIAL PACKAGING & MOUNTING ARCHITECTURE -->
-      <div class="cozy-card" style="margin-top: 28px;">
-        <h3 style="font-family:var(--font-serif); font-size:22px; color:var(--text-espresso); margin-bottom:12px;">📦 Internal Spatial Packaging: How Everything Fits Inside (No Clutter)</h3>
-        <p style="font-size:14px; color:var(--text-body); margin-bottom:18px;">
-          A common engineering critique in product design reviews is whether all electronic boards, motor, volute duct, 3S battery pack, and filter can physically fit inside the <strong>130mm diameter × 180mm height</strong> cylindrical base. Here is the mathematical spatial proof and 3-tier vertical architecture:
-        </p>
-
-        <div class="grid-3">
-          <div style="background:var(--bg-card-soft); border:1px solid var(--border-cozy); padding:18px; border-radius:14px;">
-            <h4 style="font-size:14px; color:var(--accent-warm-gold); font-weight:600;">Tier 1: Top Deck (0 – 25mm)</h4>
-            <p style="font-size:13px; color:var(--text-body); margin-top:6px; line-height:1.6;">
-              • Flush smoked acrylic/glass top plate.<br>
-              • 0.96" OLED (27×27mm) + TTP223 touch pad glued underneath with zero external screw heads.<br>
-              • Volute discharge transition ducts routing smoothly into ring pillars.
-            </p>
-          </div>
-          <div style="background:var(--bg-card-soft); border:1px solid var(--border-cozy); padding:18px; border-radius:14px;">
-            <h4 style="font-size:14px; color:var(--accent-warm-gold); font-weight:600;">Tier 2: Mid Plenum (25 – 120mm)</h4>
-            <p style="font-size:13px; color:var(--text-body); margin-top:6px; line-height:1.6;">
-              • 360° Cylindrical Pleated HEPA Filter (110mm OD × 70mm ID).<br>
-              • A2212 Motor & 92mm Impeller centered inside the filter cavity.<br>
-              • Incoming air passes through filter folds directly into the impeller inlet.
-            </p>
-          </div>
-          <div style="background:var(--bg-card-soft); border:1px solid var(--border-cozy); padding:18px; border-radius:14px;">
-            <h4 style="font-size:14px; color:var(--accent-warm-gold); font-weight:600;">Tier 3: Side & Base (120 – 180mm)</h4>
-            <p style="font-size:13px; color:var(--text-body); margin-top:6px; line-height:1.6;">
-              • 3S 18650 Li-ion battery pack seated in dedicated bottom cradle for low center-of-gravity.<br>
-              • Arduino Nano (45×18mm) and 30A ESC (50×25mm) clipped vertically into side wall snap-fit ribs.<br>
-              • <strong>Total Volume:</strong> Base has 1.92 Liters; parts take only 0.25 Liters (<strong>87% free airflow clearance!</strong>).
-            </p>
-          </div>
-        </div>
-      </div>
-
-
-
-      <!-- PAKISTAN ONLINE PROCUREMENT DIRECTORY -->
-      <div class="cozy-card" style="margin-top: 28px;">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
+      <!-- ==================== TURNKEY DYSON GEN1 ACADEMIC BILL OF MATERIALS (~5.5k–6k PKR) ==================== -->
+      <div class="cozy-card" style="margin-top: 28px; background: linear-gradient(135deg, #ffffff 0%, #faf6ef 100%); border: 2px solid var(--accent-champagne); border-radius: 22px; padding: 28px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 16px; margin-bottom: 18px;">
           <div>
-            <h3 style="font-family:var(--font-serif); font-size:22px; color:var(--text-espresso); margin-bottom:4px;">🛒 Pakistan Verified Online Procurement Directory</h3>
-            <p style="font-size:13px; color:var(--text-muted);">Direct verified online store links in Lahore, Karachi & Islamabad for fast home delivery</p>
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+              <span style="background: var(--gold-gradient); color: #1f1b18; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase;">PRIMARY ACADEMIC BOM</span>
+              <span style="background: rgba(16, 185, 129, 0.15); color: #059669; padding: 3px 10px; border-radius: 14px; font-size: 11px; font-weight: 700;">Rs. 5,780 PKR Turnkey</span>
+              <span style="color: var(--accent-warm-gold); font-size: 12px; font-weight: 600;">5.5k–6k PKR Budget Target</span>
+            </div>
+            <h3 style="font-family: var(--font-serif); font-size: 26px; color: var(--text-espresso); margin: 0;">
+              Dyson Gen1 Centrifugal Architecture Turnkey Sourcing (~5.5k–6k PKR)
+            </h3>
           </div>
-          <span style="background:rgba(212,163,115,0.15); color:var(--accent-warm-gold); padding:4px 12px; border-radius:20px; font-size:12px; font-weight:600;">All Parts In-Stock in Pakistan</span>
+          <div style="text-align: right; background: #ffffff; border: 1px solid var(--border-cozy); padding: 12px 20px; border-radius: 14px;">
+            <span style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 700;">Total Student BOM</span>
+            <div style="font-family: var(--font-serif); font-size: 24px; color: #059669; font-weight: 700;">Rs. 5,780 PKR</div>
+            <span style="font-size: 11px; color: var(--accent-warm-gold); font-weight: 600;">≈ $20.70 USD Direct Cost</span>
+          </div>
         </div>
+
+        <p style="font-size: 13.5px; color: var(--text-body); line-height: 1.6; margin-bottom: 18px;">
+          The turnkey bill of materials for the student capstone evaluation. All items are verified available from local Pakistani e-commerce stores (Digilog.pk, Electrobes.com, Daraz.pk) and physical Lahore electronics markets (Hall Road, Brandreth Road, Montgomery Road):
+        </p>
 
         <div class="table-responsive">
-          <table class="cozy-table">
+          <table class="cozy-table" style="background: #ffffff; border-radius: 12px; overflow: hidden;">
             <thead>
-              <tr>
-                <th>Component & Specification</th>
-                <th>Verified Online Store</th>
-                <th>City / Shipping Origin</th>
-                <th>Est. Price (PKR)</th>
-                <th>Direct Store Link</th>
+              <tr style="background: var(--bg-cream);">
+                <th>#</th>
+                <th>Component &amp; Technical Specification</th>
+                <th>Qty</th>
+                <th>Target Pakistani Store</th>
+                <th>Lahore Offline Sourcing Hub</th>
+                <th style="text-align: right;">Est. Price (PKR)</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><strong>A2212 1000KV/1400KV BLDC Motor + 30A ESC Combo</strong></td>
-                <td>Hecto.pk / Daraz Mall</td>
-                <td>Lahore / Karachi (2-3 Days)</td>
-                <td>Rs. 2,680 combo</td>
-                <td><a href="https://digilog.pk/products/a2212-1400kv-brushless-dc-bldc-motor-in-pakistan" target="_blank" style="color:var(--accent-warm-gold); font-weight:700; text-decoration:none;">Buy on Digilog (Rs. 1,470) ↗</a></td>
+                <td><strong>1</strong></td>
+                <td><strong>12V High-Static Centrifugal Blower</strong> (7530 or 9733, 340 Pa, &lt;38 dBA)</td>
+                <td>1 Pc</td>
+                <td>Digilog.pk / Daraz.pk</td>
+                <td>Kiran Electronics / MicroTech (Hall Road)</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 1,050</td>
+              </tr>
+              <tr style="background: #fdfbf7;">
+                <td><strong>2</strong></td>
+                <td><strong>12V DC PWM Speed Controller Module</strong> (10k Potentiometer with Switch)</td>
+                <td>1 Pc</td>
+                <td>Digilog.pk / Electrobes.com</td>
+                <td>Madina Electronics / Semiconductor Plaza (Hall Road)</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 280</td>
               </tr>
               <tr>
-                <td><strong>Arduino Nano V3 (ATmega328P + Cable)</strong></td>
-                <td>Digilog.pk</td>
-                <td>Rawalpindi / Nationwide</td>
-                <td>Rs. 910</td>
-                <td><a href="https://digilog.pk/products/arduino-nano-v3-with-usb-cable-in-pakistan" target="_blank" style="color:var(--accent-warm-gold); font-weight:700; text-decoration:none;">Buy on Digilog (Rs. 910) ↗</a></td>
+                <td><strong>3</strong></td>
+                <td><strong>Champagne Gold Knurled Control Knob</strong> (Aluminum/ABS, 20mm OD, 6mm Shaft)</td>
+                <td>1 Pc</td>
+                <td>Electrobes.com / Digilog.pk</td>
+                <td>Audio Hardware Stalls (Hall Road)</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 100</td>
+              </tr>
+              <tr style="background: #fdfbf7;">
+                <td><strong>4</strong></td>
+                <td><strong>12V 2A Regulated Switching AC-DC Wall Adapter</strong> (220V AC, 24W continuous)</td>
+                <td>1 Pc</td>
+                <td>Digilog.pk / Electrobes.com</td>
+                <td>Al-Rehman Electronics / CCTV Wholesalers (Hall Road)</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 680</td>
               </tr>
               <tr>
-                <td><strong>0.96" I2C 128x64 OLED Display (SSD1306)</strong></td>
-                <td>Digilog.pk / Electrobes</td>
-                <td>Islamabad / Nationwide</td>
-                <td>Rs. 500</td>
-                <td><a href="https://digilog.pk/products/arduino-0-96-inch-iic-oled-display-128x64-i2c-ssd1306-lcd-screen-in-pakistan" target="_blank" style="color:var(--accent-warm-gold); font-weight:700; text-decoration:none;">Buy on Digilog (Rs. 500) ↗</a></td>
+                <td><strong>5</strong></td>
+                <td><strong>DC 5.5x2.1mm Panel Mount Barrel Jack</strong> (Threaded Hex Nut, Rear Port)</td>
+                <td>1 Pc</td>
+                <td>Digilog.pk / Electrobes.com</td>
+                <td>Madina Electronics / Hall Road Component Stalls</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 50</td>
+              </tr>
+              <tr style="background: #fdfbf7;">
+                <td><strong>6</strong></td>
+                <td><strong>360° Cylindrical Pleated H13 HEPA Filter</strong> (110mm OD x 70mm ID x 120mm H)</td>
+                <td>1 Pc</td>
+                <td>Daraz.pk Express Purifier</td>
+                <td>Montgomery Road Auto Filter &amp; Purifier Vendors</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 1,400</td>
               </tr>
               <tr>
-                <td><strong>TTP223 Capacitive Digital Touch Sensor</strong></td>
-                <td>Digilog.pk</td>
-                <td>Nationwide Delivery</td>
-                <td>Rs. 40</td>
-                <td><a href="https://digilog.pk/products/ttp223-capacitive-touch-sensor-module-in-pakistan" target="_blank" style="color:var(--accent-warm-gold); font-weight:700; text-decoration:none;">Buy on Digilog (Rs. 40) ↗</a></td>
+                <td><strong>7</strong></td>
+                <td><strong>Warm White (3000K) Illuminated Halo LED Ring</strong> (12V COB / SMD Ring)</td>
+                <td>1 Pc</td>
+                <td>Digilog.pk / Daraz.pk</td>
+                <td>LED Strip Wholesalers (Hall Road / Nishter Road)</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 320</td>
+              </tr>
+              <tr style="background: #fdfbf7;">
+                <td><strong>8</strong></td>
+                <td><strong>Shore-40A Soft Silicone Anti-Vibration Grommets</strong> (M3, 9mm OD, 4x Dampers)</td>
+                <td>4 Pcs</td>
+                <td>Daraz.pk / Electrobes.com</td>
+                <td>Champion RC Hobby / Audio Hardware (Hall Road)</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 150</td>
               </tr>
               <tr>
-                <td><strong>3S 40A Li-ion BMS Protection Board</strong></td>
-                <td>Digilog.pk / Electrobes</td>
-                <td>Rawalpindi / Nationwide</td>
-                <td>Rs. 380</td>
-                <td><a href="https://digilog.pk/products/3s-40a-bms" target="_blank" style="color:var(--accent-warm-gold); font-weight:700; text-decoration:none;">Buy on Digilog (Rs. 380) ↗</a></td>
+                <td><strong>9</strong></td>
+                <td><strong>Fastener Kit: M3 Screws &amp; Brass Heat-Set Inserts</strong> (M3x10/12mm 12x, Inserts 10x)</td>
+                <td>1 Set</td>
+                <td>Electrobes.com</td>
+                <td>Brandreth Road Bolt &amp; Fastener Market</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 250</td>
               </tr>
-              <tr>
-                <td><strong>3x 18650 High-Drain Li-ion Cells (2600mAh)</strong></td>
-                <td>Daraz.pk / Vape/Battery stores</td>
-                <td>Lahore / Karachi</td>
-                <td>Rs. 1,350 (set)</td>
-                <td><a href="https://digilog.pk/products/18650-2200mah-3_7v" target="_blank" style="color:var(--accent-warm-gold); font-weight:700; text-decoration:none;">Buy on Digilog (Rs. 320/cell) ↗</a></td>
+              <tr style="background: #fdfbf7;">
+                <td><strong>10</strong></td>
+                <td><strong>3D Printing Filament Pro-Rated</strong> (~450g PETG/PLA+ @ Rs. 3,500/kg Spool Rate)</td>
+                <td>~450g</td>
+                <td>Electrobes.com / 3DPrint.pk</td>
+                <td>3DPrint.pk / Vertex 3D (Model Town / Gulberg Lahore)</td>
+                <td style="text-align: right; font-weight: 600;">Rs. 1,500</td>
               </tr>
-              <tr>
-                <td><strong>12V 10A (120W) DC Power Supply Adapter</strong></td>
-                <td>Daraz.pk / ElectronicsPro</td>
-                <td>Lahore / Karachi</td>
-                <td>Rs. 2,200</td>
-                <td><a href="https://digilog.pk/products/12v-5a-60w-power-supply-ac-to-dc-adapter" target="_blank" style="color:var(--accent-warm-gold); font-weight:700; text-decoration:none;">Buy on Digilog (Rs. 960) ↗</a></td>
-              </tr>
-              <tr>
-                <td><strong>360° Cylindrical Pleated HEPA Filter Cartridge</strong></td>
-                <td>Daraz.pk (Car Air Purifier Replacement)</td>
-                <td>Nationwide (110x70mm)</td>
-                <td>Rs. 3,896</td>
-                <td><a href="https://www.daraz.pk/products/hepa-tp01-tp02-am11-bp01-i1957039227.html" target="_blank" style="color:var(--accent-warm-gold); font-weight:700; text-decoration:none;">Buy on Daraz (Rs. 3,896) ↗</a></td>
-              </tr>
-              <tr>
-                <td><strong>PETG 1.75mm 3D Printer Filament (1kg Spool)</strong></td>
-                <td>3DHub.pk / Make3D</td>
-                <td>Lahore / Islamabad</td>
-                <td>Rs. 4,500</td>
-                <td><a href="https://electrobes.com/product/exyz-petg-1-75mm-3d-printer-filament-1kg-roll/" target="_blank" style="color:var(--accent-warm-gold); font-weight:700; text-decoration:none;">Buy on Electrobes (Rs. 4,500) ↗</a></td>
-              </tr>
-              <tr style="background:#faf7f1; font-weight:700;">
-                <td colspan="3"><strong>TOTAL ESTIMATED ONLINE PROCUREMENT (Complete Smart System + 3S Battery)</strong></td>
-                <td><span style="color:#059669; font-size:15px;">Rs. 15,396 PKR</span></td>
-                <td><span style="color:var(--accent-warm-gold); font-size:12px;">Delivered in 2–4 Business Days</span></td>
+              <tr style="background: #faf7f1; font-weight: 700; color: var(--text-espresso);">
+                <td colspan="5" style="text-align: right; font-size: 13px; letter-spacing: 0.5px;">TOTAL TURNKEY DYSON GEN1 BUILD COST (5.5k–6k PKR WINDOW):</td>
+                <td style="text-align: right; color: #059669; font-size: 15px; font-family: var(--font-mono);">Rs. 5,780 PKR</td>
               </tr>
             </tbody>
           </table>
         </div>
-
-        <div class="note-box" style="margin-top: 18px;">
-          <strong>💡 Smart Budget Optimization (Keeping Total Under Rs. 10,000 PKR):</strong><br>
-          • <strong>Option A (University Lab Filament):</strong> If printing at university lab (paying only per-gram print fee ~Rs. 1,500 instead of buying full 1kg spool), total cost drops to <strong>Rs. 9,390 PKR</strong>!<br>
-          • <strong>Option B (WiFi Router Adapter Re-use):</strong> If using an existing 12V DC power adapter (router adapter), save another Rs. 2,200, bringing the cost down to <strong>Rs. 7,190 PKR</strong>!
-        </div>
       </div>
 
-    </div>
-
-    <!-- ==================== TAB 6: SOLIDWORKS MASTER CAD ARCHITECTURE & MCP ==================== -->
-    <div id="tab-automation" class="tab-content">
-      <h3 class="content-headline">6. SolidWorks Master Architecture, All Subsystems & SolidWorks MCP</h3>
-      <p class="content-lead">A comprehensive deep-dive into the SolidWorks CAD modeling system, all mechanical and aerodynamic subsystems, Model Context Protocol (MCP) AI automation, and the 15-day execution roadmap.</p>
-
-      <!-- Section A: SolidWorks System Architecture -->
-      <div class="grid-2">
-        <div class="cozy-card">
-          <div class="card-icon">🏛️</div>
-          <h3>SolidWorks Core System Architecture & Controls</h3>
-          <p>SolidWorks is built on the Parasolid geometric modeling kernel. Mastering VORTEX-100 requires navigating 5 primary interface and data management controls:</p>
-          <ul class="cozy-list">
-            <li><strong>FeatureManager Design Tree:</strong> The chronologically ordered parametric history tree. Controls feature order, parent-child relations, and roll-back bars for sketch diagnostics.</li>
-            <li><strong>CommandManager Ribbon & Tabs:</strong> Grouped into Features, Surfaces, Sheet Metal/Weldments, Evaluate (Measure, Mass Properties, Draft Analysis), and SolidWorks Add-Ins (Flow Simulation, Simulation).</li>
-            <li><strong>PropertyManager & Context Toolbars:</strong> Dynamic context-sensitive panel providing numerical inputs, draft angles, guide curve selections, and end conditions.</li>
-            <li><strong>ConfigurationManager:</strong> Houses multi-configuration states (e.g., "Prototype_3DPrint_1.3mm_Slit" vs "Production_Tooling_1.2mm_Slit" vs "Exploded_View_Config").</li>
-            <li><strong>Equations & Global Variables Manager (Tools &gt; Equations):</strong> The central nervous system driving all part dimensions parametrically from a single mathematical table.</li>
-          </ul>
-        </div>
-
-        <div class="cozy-card">
-          <div class="card-icon">⚙️</div>
-          <h3>The 6 Core Modeling Subsystems of VORTEX-100</h3>
-          <p>To manufacture a high-performance bladeless fan, SolidWorks is broken into 6 interdependent engineering subsystems:</p>
-          <ul class="cozy-list">
-            <li><strong>Subsystem 1: Master Parametric Skeleton:</strong> Houses global coordinate datums, the golden-ratio toroid envelope (370mm major, 270mm minor), and base intake references.</li>
-            <li><strong>Subsystem 2: Hybrid Surface-Solid Coandă Foil:</strong> Employs 3D boundary surfaces and guide splines to form the aerodynamic 16.0° exit ramp and 1.30mm discharge slit.</li>
-            <li><strong>Subsystem 3: Centrifugal Turbomachinery:</strong> 11-blade backwards logarithmic spiral impeller (`β1=22°`, `β2=38°`) and Archimedean spiral volute casing (1:3.4 expansion ratio).</li>
-            <li><strong>Subsystem 4: Top-Down Assembly & Mating:</strong> Rigid and concentric mechanical mates, with dynamic clearance verification to guarantee zero impeller rubbing.</li>
-            <li><strong>Subsystem 5: Simulation (CFD & FEA):</strong> Flow Simulation proving 24.6 m/s jet velocity and Simulation FEA verifying centrifugal stress safety at 9,500 RPM.</li>
-            <li><strong>Subsystem 6: Tooling & DFM Analysis:</strong> Draft angle inspection (1.5° to 2.0°), nominal wall thickness validation (2.4mm), and parting line development.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Section B: SolidWorks MCP Automation Deep-Dive -->
-      <div class="cozy-card" style="margin-top: 28px;">
-        <div class="card-icon">🤖</div>
-        <h3>The Truth About "SolidWorks MCP" & AI CAD Automation</h3>
-        <p>
-          You specifically asked whether SolidWorks has an <strong>MCP (Model Context Protocol)</strong> and whether you can connect it so an AI agent can build the 3D fan CAD model for you. Here is the exact technical reality and how you can do it:
-        </p>
-
-        <div class="arch-flow-diagram">
-+---------------------------------------------------------------------------------------------------+
-|                        SOLIDWORKS MODEL CONTEXT PROTOCOL (MCP) ARCHITECTURE                        |
-+---------------------------------------------------------------------------------------------------+
-
-   [ User / AI Agent ] (Antigravity / Claude)
-            |
-            |  1. JSON-RPC over STDIO / SSE (Model Context Protocol)
-            v
-   [ CAD MCP Server ] (e.g. `cad-mcp` or `solidworks-mcp` Node.js / Python daemon)
-            |
-            |  2. Windows COM Interop (`win32com.client` or `SolidWorks.Interop.sldworks.dll`)
-            v
-   [ Windows OS COM Automation Pipeline ] (SldWorks.Application)
-            |
-            |  3. Direct Parasolid Kernel API Method Calls
-            v
-   [ Active SolidWorks Session ] (Draws sketches, revolves Coanda surfaces, mates assembly, exports STEP)
-+---------------------------------------------------------------------------------------------------+
-        </div>
-
-        <div class="grid-2" style="margin-top: 20px;">
-          <div>
-            <h4 style="font-family: var(--font-serif); font-size: 18px; color: var(--text-espresso); margin-bottom: 8px;">1. Does SolidWorks Have an Official MCP?</h4>
-            <p>
-              Dassault Systèmes has not yet released an official out-of-the-box MCP server. However, the open-source engineering community has created <strong>CAD MCP bridges</strong> (such as <code>cad-mcp</code>, <code>solidworks-mcp</code>, and CAD-agent servers). Because SolidWorks runs on Windows and provides a comprehensive COM automation API (<code>SldWorks.Application</code>), any MCP server can connect to your running SolidWorks window and control it with full fidelity!
-            </p>
-
-            <h4 style="font-family: var(--font-serif); font-size: 18px; color: var(--text-espresso); margin-top: 16px; margin-bottom: 8px;">2. How You Connect It to Me (The AI):</h4>
-            <p>
-              You add the MCP server to your AI configuration file (e.g., <code>claude_desktop_config.json</code> or your Antigravity agent settings):
-            </p>
-            <div class="code-box">
-{
-  "mcpServers": {
-    "solidworks": {
-      "command": "python",
-      "args": ["-m", "solidworks_mcp_server", "--port", "8080"]
-    }
-  }
-}
-            </div>
-            <p style="margin-top: 10px;">
-              Once connected, you open SolidWorks on your screen, and simply tell me: <em>"Build the VORTEX-100 fan assembly"</em>. I will execute the tool calls, sketch the profiles, loft the Coandă surfaces, and build the CAD model right before your eyes!
-            </p>
-          </div>
-
-          <div>
-            <h4 style="font-family: var(--font-serif); font-size: 18px; color: var(--text-espresso); margin-bottom: 8px;">3. What MCP Tools Expose to the Agent:</h4>
-            <div class="table-responsive"><table class="cozy-table">
-              <thead>
-                <tr>
-                  <th>MCP Tool Name</th>
-                  <th>Action Executed in SolidWorks</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><code>sldworks_new_part</code></td>
-                  <td>Creates blank .SLDPRT from millimeter template</td>
-                </tr>
-                <tr>
-                  <td><code>create_sketch_spline</code></td>
-                  <td>Draws 16° Coandă aerofoil curve and volute spiral</td>
-                </tr>
-                <tr>
-                  <td><code>feature_revolve_boss</code></td>
-                  <td>Revolves 360° tapered base pedestal and toroid</td>
-                </tr>
-                <tr>
-                  <td><code>pattern_cut_circular</code></td>
-                  <td>Generates 180 micro-holes and 11 impeller blades</td>
-                </tr>
-                <tr>
-                  <td><code>assemble_and_mate</code></td>
-                  <td>Inserts parts into .SLDASM and applies mates</td>
-                </tr>
-                <tr>
-                  <td><code>export_step_stl</code></td>
-                  <td>Exports production watertight .STEP and .STL files</td>
-                </tr>
-              </tbody>
-            </table></div>
-
-            <h4 style="font-family: var(--font-serif); font-size: 18px; color: var(--text-espresso); margin-top: 16px; margin-bottom: 8px;">4. Standalone Parametric Script (Instant Alternative):</h4>
-            <p>
-              Even before you connect an MCP, you don't have to draw a single line in SolidWorks! I have written a complete automation script: <code>vortex_solidworks_automation.py</code> (located in your project folder). Running this script computes all spline equations and exports the CAD manifest in seconds!
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Section C: Embedded Python Automation Script -->
-      <div class="cozy-card" style="margin-top: 28px;">
-        <div class="card-icon">💻</div>
-        <h3>Production Parametric Automation Script (vortex_solidworks_automation.py)</h3>
-        <p>This script executes locally on Windows to drive SolidWorks or compute pure mathematical CAD coordinates:</p>
-        <div class="code-box">
-<span class="c-comment"># ======================================================================================
-# VORTEX-100 SOLIDWORKS PARAMETRIC COM AUTOMATION ENGINE
-# ======================================================================================</span>
-<span class="c-kw">import</span> math, json, os
-
-PARAMS = {
-    <span class="c-str">"LOOP_MAJOR_DIA"</span>: 0.370,         <span class="c-comment"># 370 mm Outer Major Diameter</span>
-    <span class="c-str">"LOOP_MINOR_DIA"</span>: 0.270,         <span class="c-comment"># 270 mm Inner Aperture Diameter</span>
-    <span class="c-str">"COANDA_RAMP_ANGLE"</span>: 16.0,       <span class="c-comment"># 16.0 degrees exit flare</span>
-    <span class="c-str">"DISCHARGE_SLIT_WIDTH"</span>: 0.00130, <span class="c-comment"># 1.30 mm in CAD (compensates for 0.5% PETG shrinkage)</span>
-    <span class="c-str">"IMPELLER_OD"</span>: 0.092,            <span class="c-comment"># 92 mm 11-blade centrifugal impeller</span>
-    <span class="c-str">"IMPELLER_BLADES"</span>: 11,           <span class="c-comment"># 11 backwards-curved aerofoil blades</span>
-    <span class="c-str">"BASE_BOTTOM_DIA"</span>: 0.170,        <span class="c-comment"># 170 mm pedestal base</span>
-    <span class="c-str">"BASE_HEIGHT"</span>: 0.240,            <span class="c-comment"># 240 mm chassis height</span>
-    <span class="c-str">"INTAKE_HOLES"</span>: 180              <span class="c-comment"># 180 precision micro-perforations</span>
-}
-
-<span class="c-kw">def</span> <span class="c-fn">generate_blade_spline</span>():
-    <span class="c-comment"># Logarithmic spiral: r(theta) = r_hub * exp(theta * cot(beta))</span>
-    r_hub, r_tip = 0.019, 0.046
-    cot_b = 1.0 / math.tan(math.radians(38.0))
-    t_max = math.log(r_tip / r_hub) / cot_b
-    <span class="c-kw">return</span> [(round(r_hub * math.exp(t * cot_b) * math.cos(t) * 1000, 3),
-             round(r_hub * math.exp(t * cot_b) * math.sin(t) * 1000, 3))
-            <span class="c-kw">for</span> t <span class="c-kw">in</span> [i * t_max / 30 <span class="c-kw">for</span> i <span class="c-kw">in</span> range(31)]]
-
-<span class="c-kw">try</span>:
-    <span class="c-kw">import</span> win32com.client
-    swApp = win32com.client.Dispatch(<span class="c-str">"SldWorks.Application"</span>)
-    swApp.Visible = True
-    part = swApp.NewDocument(swApp.GetUserPreferenceStringValue(1), 0, 0, 0)
-    print(<span class="c-str">"[+] Connected to SolidWorks. Master skeleton model generated!"</span>)
-<span class="c-kw">except</span> Exception <span class="c-kw">as</span> e:
-    print(<span class="c-str">"[*] Standalone mode: Exported JSON manifest for CAD MCP agent."</span>)
-        </div>
-      </div>
-
-      <!-- Section D: 15-Day Fast-Track Roadmap -->
-      <div class="cozy-card" style="margin-top: 28px;">
-        <div class="card-icon">📅</div>
-        <h3>15-Day Fast-Track Prototype Execution Plan</h3>
-        <p>A structured timeline to take VORTEX-100 from digital files to blowing a real Coandă breeze on your desk in 15 days:</p>
-
-        <table class="cozy-table" style="margin-top: 16px;">
-          <thead>
-            <tr>
-              <th>Phase & Timeline</th>
-              <th>Core Objectives</th>
-              <th>Key Deliverables & Action Items</th>
-              <th>Verification Gate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Phase 1: Days 1 – 3</strong><br><span style="color:var(--accent-warm-gold);">Procurement & Bench Test</span></td>
-              <td>Acquire all OTS hardware from Hall Road / Daraz</td>
-              <td>Order A2212 motor, 30A ESC, 12V 10A PSU, Arduino Nano, OLED, TTP223 touch sensor, and HEPA filter. Wire breadboard circuit and flash Arduino firmware.</td>
-              <td>Motor arms with 1000 µs boot tone; touch sensor cycles 5 speed presets cleanly.</td>
-            </tr>
-            <tr>
-              <td><strong>Phase 2: Days 4 – 7</strong><br><span style="color:var(--accent-warm-gold);">CAD Generation & 3D Printing</span></td>
-              <td>Generate CAD geometry & print custom aerodynamic parts</td>
-              <td>Execute <code>vortex_solidworks_automation.py</code> to output STEP/STL files. Print Chassis Base, Volute Plenum, Loop Halves, and Centrifugal Impeller (100% concentric infill PETG).</td>
-              <td>Check print dimensional tolerances (slit width = 1.20mm ±0.1mm; zero bed warping).</td>
-            </tr>
-            <tr>
-              <td><strong>Phase 3: Days 8 – 10</strong><br><span style="color:var(--accent-warm-gold);">Balancing & Sub-Assembly</span></td>
-              <td>Eliminate vibration & mount blower drive</td>
-              <td>Mount impeller onto motor shaft; perform static knife-edge razor balance check. Fit 4x Shore-40A silicone grommets to motor plate. Bench run at 9,500 RPM.</td>
-              <td>Desk exhibits zero violent vibration; sound floor under 45 dB on workbench.</td>
-            </tr>
-            <tr>
-              <td><strong>Phase 4: Days 11 – 13</strong><br><span style="color:var(--accent-warm-gold);">Hermetic Sealing & Assembly</span></td>
-              <td>Assemble pressure vessels & install HEPA core</td>
-              <td>Insert 360° pleated HEPA cartridge into base cavity. Apply neutral RTV clear silicone in loop tongue-and-groove track. Clamp with M3 screws; cure for 24 hours.</td>
-              <td>Soapy water bubble test at low speed confirms 100% airtight seams without leaks.</td>
-            </tr>
-            <tr>
-              <td><strong>Phase 5: Days 14 – 15</strong><br><span style="color:var(--accent-warm-gold);">Anemometer Testing & Tuning</span></td>
-              <td>Validate airflow performance & UX finish</td>
-              <td>Measure exit jet velocity with digital anemometer (target: 20–25 m/s). Verify 3.2x room air entrainment. Glue smoked glass touch disc and enjoy pure Coandă airflow!</td>
-              <td>Continuous, silky, laminar breeze entraining 3.2x room air with 0 chop.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+      
 
   </div>
 
@@ -4089,17 +3989,17 @@ PARAMS = {
       // Clipping Plane (Longitudinal Section A-A)
       clipPlane3d = new THREE.Plane(new THREE.Vector3(0, 0, -1), 0);
 
-      // 6. Materials
-      matCream = new THREE.MeshStandardMaterial({ color: 0xF5F2EB, roughness: 0.35, metalness: 0.05 });
-      matBrass = new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.25, metalness: 0.88 });
-      matGold = new THREE.MeshStandardMaterial({ color: 0xE5A93C, roughness: 0.20, metalness: 0.92 });
-      matVoluteBlack = new THREE.MeshStandardMaterial({ color: 0x1E2229, roughness: 0.52, metalness: 0.12 });
+      // 6. Materials (PBR CMF Calibrated)
+      matCream = new THREE.MeshStandardMaterial({ color: 0xF4F1EA, roughness: 0.35, metalness: 0.05 }); // Warm Alabaster White
+      matBrass = new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.22, metalness: 0.88 }); // Champagne Gold
+      matGold = new THREE.MeshStandardMaterial({ color: 0xD4AF37, roughness: 0.22, metalness: 0.88 }); // Champagne Gold
+      matVoluteBlack = new THREE.MeshStandardMaterial({ color: 0x22252A, roughness: 0.55, metalness: 0.15 }); // Dark Charcoal
       matGasketOrange = new THREE.MeshStandardMaterial({ color: 0xF97316, roughness: 0.55, metalness: 0.0 });
       matSteel = new THREE.MeshStandardMaterial({ color: 0xE2E8F0, roughness: 0.18, metalness: 0.95 });
       matHepaFilter = new THREE.MeshStandardMaterial({ color: 0xFAFAF9, roughness: 0.85, metalness: 0.0 });
-      matBaseCream = new THREE.MeshStandardMaterial({ color: 0xF5F2EB, roughness: 0.38, metalness: 0.04 });
-      matSlitCyan = new THREE.MeshStandardMaterial({ color: 0x00F2FE, emissive: 0x00D2FE, emissiveIntensity: 0.85, roughness: 0.2 });
-      matMotorBlue = new THREE.MeshStandardMaterial({ color: 0x2563EB, roughness: 0.28, metalness: 0.85 });
+      matBaseCream = new THREE.MeshStandardMaterial({ color: 0xF4F1EA, roughness: 0.35, metalness: 0.05 }); // Warm Alabaster White
+      matSlitCyan = new THREE.MeshStandardMaterial({ color: 0xFFF8E7, emissive: 0xFFF8E7, emissiveIntensity: 0.85, roughness: 0.20, transparent: true, opacity: 0.92 }); // Warm White Illuminated Halo Ring
+      matMotorBlue = new THREE.MeshStandardMaterial({ color: 0x22252A, roughness: 0.45, metalness: 0.25 }); // Dark Charcoal Blower Housing
 
       // 7. Master Assembly Group
       fanMasterGroup = new THREE.Group();

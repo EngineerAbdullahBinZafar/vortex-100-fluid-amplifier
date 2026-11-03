@@ -54,7 +54,7 @@ PARAMS = {
     "RING_OD": 220.0,                  # Outer Major Diameter in mm
     "RING_APERTURE_ID": 150.0,         # Inner Throat Diameter (Aperture) in mm
     "COANDA_RAMP_ANGLE": 16.0,         # 16.0° convex Coandă expansion flare
-    "DISCHARGE_SLIT_WIDTH": 1.20,      # Calibrated 1.20mm continuous discharge nozzle slit
+    "DISCHARGE_SLIT_WIDTH": 1.25,      # Calibrated 1.25mm continuous discharge nozzle slit
     "RING_CHORD_DEPTH": 28.0,          # Axial depth in mm
     "TONGUE_WIDTH": 2.20,              # Tongue width for mating joint
     "GROOVE_WIDTH": 3.20,              # Groove width (0.5mm RTV silicone cavity per side)
@@ -394,8 +394,8 @@ def create_cone_manifold(r_base, r_top, h, n_theta=36, z0=0.0, center_xy=(0.0, 0
 
     return mesh
 
-def create_tube_manifold(r_in, r_out, h, n_theta=48, z0=0.0, center_xy=(0.0, 0.0)):
-    """Creates a 100% watertight hollow cylindrical tube solid."""
+def create_tube_manifold(r_in, r_out, h, n_theta=48, z0=0.0, center_xy=(0.0, 0.0), cap_bottom=True, cap_top=True):
+    """Creates a 100% watertight hollow cylindrical tube solid (or open tube when caps are False)."""
     thetas = [2.0 * math.pi * j / n_theta for j in range(n_theta)]
     cx, cy = center_xy
 
@@ -424,10 +424,12 @@ def create_tube_manifold(r_in, r_out, h, n_theta=48, z0=0.0, center_xy=(0.0, 0.0
         mesh.add_triangle(ob0, ot1, ob1)
         mesh.add_triangle(ib0, it1, it0)
         mesh.add_triangle(ib0, ib1, it1)
-        mesh.add_triangle(ot0, it0, it1)
-        mesh.add_triangle(ot0, it1, ot1)
-        mesh.add_triangle(ob0, ob1, ib1)
-        mesh.add_triangle(ob0, ib1, ib0)
+        if cap_top:
+            mesh.add_triangle(ot0, it0, it1)
+            mesh.add_triangle(ot0, it1, ot1)
+        if cap_bottom:
+            mesh.add_triangle(ob0, ob1, ib1)
+            mesh.add_triangle(ob0, ib1, ib0)
 
     return mesh
 
@@ -509,6 +511,72 @@ def create_hollow_box_manifold(dx_out, dy_out, dx_in, dy_in, dz, center_xyz=(0.0
 
     return mesh
 
+def create_oriented_box_manifold(dx, dy, dz, center_xyz=(0.0, 0.0, 0.0), angle_deg=0.0):
+    """Creates a 100% watertight 3D box solid rotated around Z-axis by angle_deg."""
+    rad = math.radians(angle_deg)
+    c, s = math.cos(rad), math.sin(rad)
+    cx, cy, cz = center_xyz
+    base_box = create_box_manifold(dx, dy, dz, center_xyz=(0, 0, 0))
+    mesh = STLMesh("Oriented_Box")
+    for x, y, z in base_box.vertices:
+        mesh.add_vertex(cx + x * c - y * s, cy + x * s + y * c, cz + z)
+    mesh.faces = list(base_box.faces)
+    return mesh
+
+def create_horizontal_tube_manifold(r_in, r_out, length, axis='y', z0=0.0, center_xy=(0.0, 0.0), n_theta=32):
+    """
+    Creates a 100% watertight tube manifold oriented horizontally along axis ('x' or 'y').
+    Mathematically rotated from Z-axis tube so all faces remain outward-oriented and watertight.
+    """
+    base_tube = create_tube_manifold(r_in, r_out, length, n_theta=n_theta, z0=0.0, cap_bottom=True, cap_top=True)
+    cx, cy = center_xy
+    mesh = STLMesh("Horizontal_Tube")
+    if axis == 'y':
+        for vx, vy, vz in base_tube.vertices:
+            mesh.add_vertex(cx + vx, cy + vz, z0 - vy)
+    elif axis == 'x':
+        for vx, vy, vz in base_tube.vertices:
+            mesh.add_vertex(cx + vz, cy + vy, z0 - vx)
+    mesh.faces = list(base_tube.faces)
+    return mesh
+
+def create_stanchion_manifold(sx, sy, z0=115.0, n_theta=28):
+    """
+    Creates a 100% watertight stepped stanchion with integrated Shore-40A silicone
+    vibration-damping grommet recess (diameter 9.0mm x 4.5mm depth) and central M3 hole (3.2mm).
+    Single continuous 2-manifold revolution eliminating all internal/non-manifold edges.
+    """
+    prof = [
+        [1.6, z0],
+        [6.5, z0],
+        [6.5, z0 + 3.5],
+        [7.0, z0 + 3.5],
+        [7.0, z0 + 8.0],
+        [4.5, z0 + 8.0],
+        [4.5, z0 + 3.5],
+        [1.6, z0 + 3.5],
+    ]
+    mesh = STLMesh("Stanchion_Grommet_Seat")
+    thetas = [2.0 * math.pi * j / n_theta for j in range(n_theta)]
+    cos_t = [math.cos(t) for t in thetas]
+    sin_t = [math.sin(t) for t in thetas]
+    M = len(prof)
+    for i in range(M):
+        r_i, z_i = prof[i][0], prof[i][1]
+        for j in range(n_theta):
+            mesh.add_vertex(sx + r_i * cos_t[j], sy + r_i * sin_t[j], z_i)
+    for i in range(M):
+        i_next = (i + 1) % M
+        for j in range(n_theta):
+            j_next = (j + 1) % n_theta
+            p00 = i * n_theta + j
+            p10 = i_next * n_theta + j
+            p11 = i_next * n_theta + j_next
+            p01 = i * n_theta + j_next
+            mesh.add_triangle(p00, p11, p10)
+            mesh.add_triangle(p00, p01, p11)
+    return mesh
+
 # ======================================================================================
 # COMPONENT 1: RING AIRFOIL FRONT (Ring_Airfoil_Front.stl)
 # ======================================================================================
@@ -517,7 +585,7 @@ def generate_ring_airfoil_front():
     Component 1: Ring_Airfoil_Front.stl
     Features:
     - 16.0° convex Coandă aerofoil ramp on inner aperture (throat R = 75.0mm)
-    - Calibrated 1.20mm discharge nozzle throat lip reference
+    - Calibrated 1.25mm discharge nozzle throat lip reference
     - Smooth air multiplier flare with aerodynamic leading-edge radius (up to Z = 28mm)
     - Interlocking continuous tongue ridge (width 2.2mm, depth 1.8mm at R = 91.8 to 94.0mm)
     - Internal hollow plenum recess matching the rear shell cavity
@@ -617,7 +685,7 @@ def generate_ring_airfoil_back():
     Component 2: Ring_Airfoil_Back.stl
     Features:
     - Matching rear toroid shell (220mm OD)
-    - Calibrated discharge nozzle throat lip at R = 73.8mm (forms exact 1.20mm slit with front 75.0mm lip)
+    - Calibrated discharge nozzle throat lip at R = 73.75mm (forms exact 1.25mm slit with front 75.0mm lip)
     - Internal hollow toroidal pressure plenum channel for 360° air redistribution (trough depth 18mm)
     - Mating tongue-and-groove joint (width 3.2mm, depth 2.2mm at R = 91.3 to 94.5mm) for RTV silicone seal
     - Rear aerodynamic suction bellmouth ellipse for smooth ambient air entrainment
@@ -628,8 +696,8 @@ def generate_ring_airfoil_back():
     print("[2/5] Engineering Component 2: Ring_Airfoil_Back.stl ...")
 
     R_lip_front = PARAMS["RING_APERTURE_ID"] / 2.0      # 75.0 mm
-    slit_gap = PARAMS["DISCHARGE_SLIT_WIDTH"]           # 1.20 mm
-    R_lip_back = R_lip_front - slit_gap                 # 73.8 mm (EXACT calibrated gap!)
+    slit_gap = PARAMS["DISCHARGE_SLIT_WIDTH"]           # 1.25 mm
+    R_lip_back = R_lip_front - slit_gap                 # 73.75 mm (EXACT calibrated 1.25mm gap!)
     R_out = PARAMS["RING_OD"] / 2.0                     # 110.0 mm
 
     prof = []
@@ -1008,12 +1076,22 @@ def generate_base_pedestal_enclosure():
     - 130.0mm OD x 180.0mm height cylindrical chassis (3.5mm nominal wall)
     - 360° MICRO-PERFORATED INTAKE PATTERN: 180 staggered 4.5mm circular through-holes
       physically perforated through the 3.5mm chassis wall between Z = 50 and 98mm
-    - Internal stepped annular seating ledge for 110mm x 70mm cylindrical HEPA filter
-    - 3S 18650 Lithium battery cradle at bottom (holds 3x 18.5x65.5mm cells)
-    - Internal motor mount bulkhead with 4x M3 Shore-40A silicone grommet recesses (9mm dia)
-    - Vertical snap-fit mounting guide rails for Arduino Nano and 30A BLDC ESC below motor deck
-    - Top deck with recessed circular bezel (122mm dia x 2.5mm depth) for flush smoked-glass touch deck
-    - Dual pillar top pass-through sockets for ring risers at X = +/- 45mm, Y = 0mm
+    - Bottom base lid interface with 3-lug bayonet twist-lock (at theta = 0, 120, 240 deg)
+      and 4x silicone non-slip rubber foot recesses (diameter 9.0mm x 3.0mm depth at R = 52mm)
+    - Rear DC 5.5x2.1mm power barrel jack port at Z = 15mm (11.2mm through-hole + anti-rotation flat)
+    - Airtight cylindrical HEPA (110x70mm) compression chamber:
+      - Lower seating shelf at Z = 12mm (OD 112mm, ID 68mm) with centering guide rim
+      - Upper compression shelf at Z = 110mm (OD 112mm, ID 68mm) compressing 110x70mm filter gaskets
+        by 1.5mm to eliminate unfiltered air bypass
+      - Airtight partition bulkhead isolating lower intake filter bay from motor chamber
+    - 12V centrifugal blower fan (7530/9733) cradle at Z = 115mm:
+      - 4x M3 mounting stanchions with Shore-40A silicone vibration-damping grommet recesses
+        (diameter 9.0mm x 4.5mm depth)
+      - Transition duct / Y-manifold splitting blower exhaust to twin vertical risers at X = +/- 45mm
+    - Front stepless rotary potentiometer boss at Z = 145mm:
+      - 7.2mm through-hole for M7 collar + 2.8mm anti-rotation indexing notch + 20mm counterbore for knob
+    - Top deck at Z = 175 to 180mm with twin riser pass-through docking sockets at X = +/- 45mm, Y = 0mm,
+      recessed bezel shelf (122mm dia x 2.5mm depth), and illuminated halo ring channel
     """
     print("[5/5] Engineering Component 5: Base_Pedestal_Enclosure.stl ...")
 
@@ -1037,8 +1115,8 @@ def generate_base_pedestal_enclosure():
     d_theta = 2.0 * math.pi / n_cols
     r_hole = 2.25  # 4.5mm diameter hole
 
-    # A. Lower solid tube (Z = 0 to 50mm)
-    lower_chassis = create_tube_manifold(r_in=R_in, r_out=R_out, h=z_perf_min, n_theta=n_cols, z0=0.0)
+    # A. Lower solid tube (Z = 0 to 50mm, open top to seamlessly connect with perforated band)
+    lower_chassis = create_tube_manifold(r_in=R_in, r_out=R_out, h=z_perf_min, n_theta=n_cols, z0=0.0, cap_bottom=True, cap_top=False)
     base_mesh.append_mesh(lower_chassis)
 
     # B. Perforated intake band (Z = 50 to 98mm) with 180 through-holes
@@ -1125,106 +1203,102 @@ def generate_base_pedestal_enclosure():
             perf_mesh.add_triangle(ic01, inner_hole[7], inner_hole[6])
             perf_mesh.add_triangle(ic00, inner_hole[6], inner_hole[5])
 
-    # Cap top and bottom ends of the perforated band to make it a 100% closed manifold solid
-    for c in range(n_cols):
-        c_next = (c + 1) % n_cols
-        # Bottom annular cap at Z = 50mm
-        ob0 = outer_corners[(0, c)]
-        ob1 = outer_corners[(0, c_next)]
-        ib0 = inner_corners[(0, c)]
-        ib1 = inner_corners[(0, c_next)]
-        perf_mesh.add_triangle(ob0, ob1, ib1)
-        perf_mesh.add_triangle(ob0, ib1, ib0)
-        # Top annular cap at Z = 98mm
-        ot0 = outer_corners[(n_rows, c)]
-        ot1 = outer_corners[(n_rows, c_next)]
-        it0 = inner_corners[(n_rows, c)]
-        it1 = inner_corners[(n_rows, c_next)]
-        perf_mesh.add_triangle(ot0, it0, it1)
-        perf_mesh.add_triangle(ot0, it1, ot1)
-
+    # Append perforated band directly without redundant internal capping disks at Z=50mm & Z=98mm
     base_mesh.append_mesh(perf_mesh)
 
-    # C. Upper solid tube (Z = 98 to 180mm)
-    upper_chassis = create_tube_manifold(r_in=R_in, r_out=R_out, h=(H_total - z_perf_max), n_theta=n_cols, z0=z_perf_max)
+    # C. Upper solid tube (Z = 98 to 180mm, open bottom to seamlessly connect with perforated band)
+    upper_chassis = create_tube_manifold(r_in=R_in, r_out=R_out, h=(H_total - z_perf_max), n_theta=n_cols, z0=z_perf_max, cap_bottom=False, cap_top=True)
     base_mesh.append_mesh(upper_chassis)
 
-    # 2. Structural Bottom Baseplate (z = 0 to 4.0mm)
-    base_floor = create_tube_manifold(r_in=12.0, r_out=R_in, h=4.0, n_theta=72, z0=0.0)
+    # 2. Bottom Lid interface with bayonet twist-lock and 4x silicone foot recesses
+    base_floor = create_tube_manifold(r_in=54.0, r_out=R_in, h=5.0, n_theta=72, z0=0.0)
     base_mesh.append_mesh(base_floor)
 
-    # 3. 4x Recessed Silicone Non-Slip Foot Sockets on Bottom (radius 52mm)
+    # 3-lug bayonet twist-lock interface at 120° spacing
+    for k in range(3):
+        ang = k * 120.0
+        rad = math.radians(ang)
+        lx = 52.5 * math.cos(rad)
+        ly = 52.5 * math.sin(rad)
+        lug = create_oriented_box_manifold(dx=6.0, dy=12.0, dz=3.0, center_xyz=(lx, ly, 4.5), angle_deg=ang)
+        base_mesh.append_mesh(lug)
+
+    # 4x silicone non-slip rubber foot recesses at R = 52mm (diameter 9.0mm x 3.0mm depth)
     for k in range(4):
         theta = math.radians(45.0 + k * 90.0)
         fx = 52.0 * math.cos(theta)
         fy = 52.0 * math.sin(theta)
-        foot = create_tube_manifold(r_in=6.5, r_out=9.0, h=3.0, n_theta=24, z0=0.0, center_xy=(fx, fy))
+        foot = create_tube_manifold(r_in=4.5, r_out=7.0, h=3.0, n_theta=24, z0=0.0, center_xy=(fx, fy))
         base_mesh.append_mesh(foot)
 
-    # 4. Integrated 3S 18650 Lithium Battery Cradle at Bottom (z = 4.0 to 28.0mm)
-    cell_spacing = 21.0
-    for sign in [-1.0, 0.0, 1.0]:
-        cy = sign * cell_spacing
-        saddle = create_box_manifold(dx=66.0, dy=19.5, dz=14.0, center_xyz=(0.0, cy, 11.0))
-        base_mesh.append_mesh(saddle)
-        clip1 = create_box_manifold(dx=4.0, dy=19.5, dz=20.0, center_xyz=(-33.0, cy, 14.0))
-        clip2 = create_box_manifold(dx=4.0, dy=19.5, dz=20.0, center_xyz=(33.0, cy, 14.0))
-        base_mesh.append_mesh(clip1)
-        base_mesh.append_mesh(clip2)
+    # 3. Rear DC 5.5x2.1mm power barrel jack port at Z = 15mm (11.2mm through-hole + anti-rotation flat)
+    dc_pad = create_box_manifold(dx=22.0, dy=4.0, dz=18.0, center_xyz=(0.0, 59.5, 15.0))
+    base_mesh.append_mesh(dc_pad)
+    dc_boss = create_horizontal_tube_manifold(r_in=5.6, r_out=8.5, length=5.0, axis='y', z0=15.0, center_xy=(0.0, 56.5))
+    base_mesh.append_mesh(dc_boss)
+    dc_flat = create_box_manifold(dx=4.0, dy=5.0, dz=1.8, center_xyz=(0.0, 59.0, 19.7))
+    base_mesh.append_mesh(dc_flat)
 
-    # 5. Internal HEPA Filter Seating Ledge at z = 40.0mm
-    # Seating shelf: Outer seat diameter 112mm (R = 56mm), Inner aperture 68mm (R = 34mm)
-    hepa_shelf = create_tube_manifold(r_in=34.0, r_out=56.0, h=4.0, n_theta=64, z0=40.0)
-    base_mesh.append_mesh(hepa_shelf)
-    # Centering guide ring
-    hepa_guide = create_tube_manifold(r_in=55.0, r_out=57.0, h=8.0, n_theta=64, z0=40.0)
-    base_mesh.append_mesh(hepa_guide)
+    # 4. Airtight cylindrical HEPA (110x70mm) compression chamber with 1.5mm gasket preloading
+    hepa_lower_shelf = create_tube_manifold(r_in=34.0, r_out=56.0, h=3.0, n_theta=72, z0=12.0)
+    base_mesh.append_mesh(hepa_lower_shelf)
+    hepa_lower_guide = create_tube_manifold(r_in=54.5, r_out=56.5, h=4.0, n_theta=72, z0=12.0)
+    base_mesh.append_mesh(hepa_lower_guide)
 
-    # 6. Internal Motor Mount Bulkhead at z = 105.0mm
-    motor_bulkhead = create_tube_manifold(r_in=14.0, r_out=R_in, h=4.5, n_theta=72, z0=105.0)
-    base_mesh.append_mesh(motor_bulkhead)
+    hepa_upper_shelf = create_tube_manifold(r_in=34.0, r_out=R_in, h=3.0, n_theta=72, z0=108.5)
+    base_mesh.append_mesh(hepa_upper_shelf)
+    hepa_upper_guide = create_tube_manifold(r_in=54.5, r_out=56.5, h=5.0, n_theta=72, z0=104.0)
+    base_mesh.append_mesh(hepa_upper_guide)
 
-    # 4x M3 Shore-40A Silicone Vibration Grommet Recesses on 19mm PCD
-    for k in range(4):
-        theta = math.radians(45.0 + k * 90.0)
-        gx = (PARAMS["MOTOR_PCD"] / 2.0) * math.cos(theta)
-        gy = (PARAMS["MOTOR_PCD"] / 2.0) * math.sin(theta)
-        grommet_recess = create_tube_manifold(r_in=1.7, r_out=4.25, h=4.5, n_theta=24, z0=105.0, center_xy=(gx, gy))
-        base_mesh.append_mesh(grommet_recess)
+    # 5. 12V centrifugal blower fan (7530/9733) cradle at Z = 115mm with 4x Shore-40A grommet recesses
+    stanchion_coords = [(-32.5, -28.0), (32.5, -28.0), (-32.5, 28.0), (32.5, 28.0)]
+    for sx, sy in stanchion_coords:
+        stanchion = create_stanchion_manifold(sx, sy, z0=115.0, n_theta=28)
+        base_mesh.append_mesh(stanchion)
 
-    # 7. Vertical Snap-Fit Electronics Guide Rails (positioned below motor deck, z = 28 to 44mm, avoiding volute!)
-    # Arduino Nano Snap-Fit Rails (45mm x 18mm board) on internal wall (+X)
-    rail_nano_1 = create_box_manifold(dx=4.5, dy=3.5, dz=16.0, center_xyz=(55.0, -10.0, 36.0))
-    rail_nano_2 = create_box_manifold(dx=4.5, dy=3.5, dz=16.0, center_xyz=(55.0, 10.0, 36.0))
-    base_mesh.append_mesh(rail_nano_1)
-    base_mesh.append_mesh(rail_nano_2)
+    cradle_beam_1 = create_box_manifold(dx=72.0, dy=6.0, dz=4.0, center_xyz=(0.0, -28.0, 117.0))
+    cradle_beam_2 = create_box_manifold(dx=72.0, dy=6.0, dz=4.0, center_xyz=(0.0, 28.0, 117.0))
+    cradle_rail_1 = create_box_manifold(dx=6.0, dy=60.0, dz=4.0, center_xyz=(-32.5, 0.0, 117.0))
+    cradle_rail_2 = create_box_manifold(dx=6.0, dy=60.0, dz=4.0, center_xyz=(32.5, 0.0, 117.0))
+    base_mesh.append_mesh(cradle_beam_1)
+    base_mesh.append_mesh(cradle_beam_2)
+    base_mesh.append_mesh(cradle_rail_1)
+    base_mesh.append_mesh(cradle_rail_2)
 
-    # 30A BLDC ESC Snap-Fit Bay (50mm x 25mm board) on internal wall (-X)
-    rail_esc_1 = create_box_manifold(dx=4.5, dy=4.0, dz=16.0, center_xyz=(-55.0, -14.0, 36.0))
-    rail_esc_2 = create_box_manifold(dx=4.5, dy=4.0, dz=16.0, center_xyz=(-55.0, 14.0, 36.0))
-    base_mesh.append_mesh(rail_esc_1)
-    base_mesh.append_mesh(rail_esc_2)
+    blower_intake_ring = create_tube_manifold(r_in=27.0, r_out=32.0, h=4.0, n_theta=48, z0=115.0)
+    base_mesh.append_mesh(blower_intake_ring)
 
-    # 8. Top Deck & Recessed Smoked-Glass Touch Bezel (z = 175.0 to 180.0mm)
-    top_deck = create_tube_manifold(r_in=20.0, r_out=R_in, h=3.0, n_theta=72, z0=175.0)
+    # Blower exhaust transition duct splitting into twin vertical risers at X = +/- 45mm
+    trans_manifold = create_box_manifold(dx=94.0, dy=22.0, dz=8.0, center_xyz=(0.0, 0.0, 129.0))
+    base_mesh.append_mesh(trans_manifold)
+    riser_left = create_tube_manifold(r_in=6.5, r_out=9.0, h=45.0, n_theta=28, z0=130.0, center_xy=(-45.0, 0.0))
+    riser_right = create_tube_manifold(r_in=6.5, r_out=9.0, h=45.0, n_theta=28, z0=130.0, center_xy=(45.0, 0.0))
+    base_mesh.append_mesh(riser_left)
+    base_mesh.append_mesh(riser_right)
+
+    # 6. Front stepless rotary potentiometer boss at Z = 145mm
+    pot_pad = create_box_manifold(dx=24.0, dy=4.0, dz=22.0, center_xyz=(0.0, -59.5, 145.0))
+    base_mesh.append_mesh(pot_pad)
+    pot_boss = create_horizontal_tube_manifold(r_in=3.6, r_out=8.0, length=5.5, axis='y', z0=145.0, center_xy=(0.0, -61.5))
+    base_mesh.append_mesh(pot_boss)
+    pot_notch = create_box_manifold(dx=2.8, dy=5.0, dz=2.0, center_xyz=(0.0, -58.5, 149.2))
+    base_mesh.append_mesh(pot_notch)
+    pot_counterbore = create_horizontal_tube_manifold(r_in=10.0, r_out=12.0, length=3.0, axis='y', z0=145.0, center_xy=(0.0, -65.0))
+    base_mesh.append_mesh(pot_counterbore)
+
+    # 7. Top deck at Z = 175 to 180mm with twin riser pass-through docking sockets
+    top_deck = create_tube_manifold(r_in=18.0, r_out=R_in, h=3.0, n_theta=72, z0=175.0)
     base_mesh.append_mesh(top_deck)
     bezel_shelf = create_tube_manifold(r_in=58.0, r_out=61.0, h=2.5, n_theta=72, z0=177.5)
     base_mesh.append_mesh(bezel_shelf)
 
-    # Dual Pillar Pass-Through Sockets at X = +/- 45mm, Y = 0mm
-    for sign in [-1.0, 1.0]:
-        px = sign * PARAMS["DIFFUSER_PILLAR_OFFSET_X"]
-        py = 0.0
-        pillar_socket = create_tube_manifold(r_in=8.0, r_out=12.0, h=10.0, n_theta=32, z0=170.0, center_xy=(px, py))
-        base_mesh.append_mesh(pillar_socket)
+    pillar_left = create_tube_manifold(r_in=8.0, r_out=11.5, h=10.0, n_theta=32, z0=170.0, center_xy=(-45.0, 0.0))
+    pillar_right = create_tube_manifold(r_in=8.0, r_out=11.5, h=10.0, n_theta=32, z0=170.0, center_xy=(45.0, 0.0))
+    base_mesh.append_mesh(pillar_left)
+    base_mesh.append_mesh(pillar_right)
 
-    # OLED Display Module Center Frame (30mm x 30mm window at top)
-    oled_frame = create_box_manifold(dx=32.0, dy=32.0, dz=3.0, center_xyz=(0.0, 20.0, 176.5))
-    base_mesh.append_mesh(oled_frame)
-
-    # Capacitive Touch Sensor Rim (24mm dia at top center)
-    touch_rim = create_tube_manifold(r_in=9.0, r_out=13.0, h=3.0, n_theta=32, z0=176.5, center_xy=(0.0, -18.0))
-    base_mesh.append_mesh(touch_rim)
+    halo_collar = create_tube_manifold(r_in=53.0, r_out=56.0, h=3.0, n_theta=64, z0=177.0)
+    base_mesh.append_mesh(halo_collar)
 
     return base_mesh
 
@@ -1250,13 +1324,28 @@ def run_vortex_pipeline():
     ]
 
     generated_files = []
+    cad_stl_dir = os.path.join(OUTPUT_DIR, "cad_stl")
+    os.makedirs(cad_stl_dir, exist_ok=True)
+
+    full_assembly_mesh = STLMesh("VORTEX_100_Full_Assembly")
 
     for filename, gen_fn in generators:
         file_path = os.path.join(OUTPUT_DIR, filename)
         mesh = gen_fn()
         v_count, f_count, f_size = mesh.save_binary_stl(file_path)
+        full_assembly_mesh.append_mesh(mesh)
         print(f"   -> Successfully generated {filename}: {f_count:,} triangles, {f_size / (1024*1024):.2f} MB")
         generated_files.append(file_path)
+
+        # Mirror to cad_stl
+        mirror_path = os.path.join(cad_stl_dir, filename)
+        mesh.save_binary_stl(mirror_path)
+
+    # Generate Full Assembly STL
+    assembly_path = os.path.join(OUTPUT_DIR, "VORTEX_100_Full_Assembly.stl")
+    full_assembly_mesh.save_binary_stl(assembly_path)
+    full_assembly_mesh.save_binary_stl(os.path.join(cad_stl_dir, "VORTEX_100_Full_Assembly.stl"))
+    print(f"   -> Successfully generated VORTEX_100_Full_Assembly.stl: {len(full_assembly_mesh.faces):,} triangles")
 
     print("\n" + "=" * 90)
     print("   RUNNING RIGOROUS 3D GEOMETRIC & TOPOLOGICAL VERIFICATION SUITE")
